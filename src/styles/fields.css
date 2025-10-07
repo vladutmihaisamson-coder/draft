@@ -1,0 +1,329 @@
+/* Field component styles using design system tokens */
+
+/* Base field styles */
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.field-label {
+  display: block;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--shade-01);
+  margin-bottom: var(--space-2);
+  line-height: var(--line-height-tight);
+}
+
+.field-input {
+  width: 100%;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--shade-01);
+  background-color: var(--shade-10);
+  border: 1px solid var(--shade-07);
+  border-radius: var(--radius-medium);
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  cursor: text;
+}
+
+.field-input:focus {
+  border-color: var(--primary-01);
+  box-shadow: 0 0 0 2px var(--primary-02);
+}
+
+.field-input:hover:not(:disabled) {
+  border-color: var(--shade-06);
+}
+
+.field-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--shade-08);
+}
+
+.field-input--error {
+  border-color: var(--error-01);
+}
+
+.field-input--error:focus {
+  border-color: var(--error-01);
+  box-shadow: 0 0 0 2px var(--error-02);
+}
+
+.field-error {
+  margin-top: var(--space-1);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  color: var(--error-01);
+  line-height: var(--line-height-tight);
+}
+
+/* Field sizes */
+.field-input--xs {
+  height: var(--height-xs);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.field-input--sm {
+  height: var(--height-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.field-input--md {
+  height: var(--height-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-base);
+}
+
+.field-input--lg {
+  height: var(--height-lg);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+.field-input--xl {
+  height: var(--height-xl);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-lg);
+}
+
+/* Textarea specific styles */
+.field-textarea {
+  width: 100%;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--shade-01);
+  background-color: var(--shade-10);
+  border: 1px solid var(--shade-07);
+  border-radius: var(--radius-medium);
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  cursor: text;
+  resize: vertical;
+  min-height: var(--height-md);
+}
+
+.field-textarea:focus {
+  border-color: var(--primary-01);
+  box-shadow: 0 0 0 2px var(--primary-02);
+}
+
+.field-textarea:hover:not(:disabled) {
+  border-color: var(--shade-06);
+}
+
+.field-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--shade-08);
+}
+
+.field-textarea--error {
+  border-color: var(--error-01);
+}
+
+.field-textarea--error:focus {
+  border-color: var(--error-01);
+  box-shadow: 0 0 0 2px var(--error-02);
+}
+
+/* Select field styles */
+.field-select {
+  width: 100%;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--shade-01);
+  background-color: var(--shade-10);
+  border: 1px solid var(--shade-07);
+  border-radius: var(--radius-medium);
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}
+
+.field-select:focus {
+  border-color: var(--primary-01);
+  box-shadow: 0 0 0 2px var(--primary-02);
+}
+
+.field-select:hover:not(:disabled) {
+  border-color: var(--shade-06);
+}
+
+.field-select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--shade-08);
+}
+
+.field-select--error {
+  border-color: var(--error-01);
+}
+
+.field-select--error:focus {
+  border-color: var(--error-01);
+  box-shadow: 0 0 0 2px var(--error-02);
+}
+
+/* Checkbox and radio styles */
+.field-checkbox,
+.field-radio {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: var(--shade-01);
+  line-height: var(--line-height-normal);
+  transition: all 0.2s ease;
+}
+
+.field-checkbox:hover:not(.field-checkbox--disabled),
+.field-radio:hover:not(.field-radio--disabled) {
+  color: var(--shade-00);
+}
+
+.field-checkbox input,
+.field-radio input {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--shade-01);
+  transition: all 0.2s ease;
+}
+
+.field-checkbox input:focus,
+.field-radio input:focus {
+  outline: 2px solid var(--primary-02);
+  outline-offset: 2px;
+}
+
+.field-checkbox input:hover:not(:disabled),
+.field-radio input:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.field-checkbox--disabled,
+.field-radio--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.field-checkbox--disabled input,
+.field-radio--disabled input {
+  cursor: not-allowed;
+}
+
+.field-checkbox-label,
+.field-radio-label {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-base);
+  color: inherit;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.field-checkbox--disabled .field-checkbox-label,
+.field-radio--disabled .field-radio-label {
+  cursor: not-allowed;
+  color: var(--shade-04);
+}
+
+/* Checkbox size variants */
+.field-checkbox-input--xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.field-checkbox-input--sm {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.field-checkbox-input--md {
+  width: 1rem;
+  height: 1rem;
+}
+
+.field-checkbox-input--lg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.field-checkbox-input--xl {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Field group styles */
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.field-group--horizontal {
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.field-group--horizontal .field {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Field help text */
+.field-help {
+  margin-top: var(--space-1);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-sm);
+  color: var(--shade-02);
+  line-height: var(--line-height-tight);
+}
+
+/* Required field indicator */
+.field-required::after {
+  content: ' *';
+  color: var(--error-01);
+}
+
+/* Field validation states */
+.field--valid .field-input {
+  border-color: var(--success-01);
+}
+
+.field--valid .field-input:focus {
+  border-color: var(--success-01);
+  box-shadow: 0 0 0 2px var(--success-02);
+}
+
+.field--invalid .field-input {
+  border-color: var(--error-01);
+}
+
+.field--invalid .field-input:focus {
+  border-color: var(--error-01);
+  box-shadow: 0 0 0 2px var(--error-02);
+}

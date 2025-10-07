@@ -1,0 +1,55 @@
+/* Normalize control input widths in Storybook (Controls panel and Docs ArgsTable) */
+
+/* Base width for text-like inputs */
+.docblock-argstable input[type="text"],
+.docblock-argstable input[type="number"],
+.docblock-argstable input[type="search"],
+.docblock-argstable input[type="url"],
+.docblock-argstable input[type="email"],
+.docblock-argstable textarea,
+.docblock-argstable select,
+.css-1yrqo1q input[type="text"],
+.css-1yrqo1q input[type="number"],
+.css-1yrqo1q input[type="search"],
+.css-1yrqo1q input[type="url"],
+.css-1yrqo1q input[type="email"],
+.css-1yrqo1q textarea,
+.css-1yrqo1q select,
+.addon-controls input[type="text"],
+.addon-controls input[type="number"],
+.addon-controls input[type="search"],
+.addon-controls input[type="url"],
+.addon-controls input[type="email"],
+.addon-controls textarea,
+.addon-controls select {
+  min-width: 220px;
+  max-width: 220px;
+  width: 220px;
+  box-sizing: border-box;
+}
+
+/* Ensure boolean and color controls align to same overall width */
+.docblock-argstable .sb-booleancontrol,
+.docblock-argstable .sb-colorcontrol,
+.addon-controls .sb-booleancontrol,
+.addon-controls .sb-colorcontrol {
+  min-width: 220px;
+  max-width: 220px;
+}
+
+/* Make segmented controls and selects fill the same width */
+.docblock-argstable .sb-form .sb-select,
+.addon-controls .sb-form .sb-select,
+.docblock-argstable .sb-form [role="radiogroup"],
+.addon-controls .sb-form [role="radiogroup"] {
+  width: 220px;
+}
+
+/* Let long values wrap to keep consistent box size */
+.docblock-argstable textarea,
+.addon-controls textarea {
+  resize: vertical;
+  max-height: 160px;
+}
+
+

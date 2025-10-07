@@ -1,5 +1,3 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
-
 interface HeaderProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
@@ -137,34 +135,27 @@ const Header = ({ navigateTo, hasClerk = false }: HeaderProps) => {
           >
             Settings
           </a>
-          {hasClerk ? (
-            <SignedIn>
-              {/* Admin link visible to admins only */}
-              <AdminLink onNavigate={handleNavigation} />
-            </SignedIn>
-          ) : (
-            <a 
-              href="#" 
-              style={{
-                color: 'var(--shade-01)',
-                textDecoration: 'none',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 'var(--font-weight-medium)',
-                padding: 'var(--space-2) var(--space-3)',
-                borderRadius: 'var(--radius-small)',
-                transition: 'background-color 0.2s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-              onClick={(e) => {
-                e.preventDefault()
-                handleNavigation('admin')
-              }}
-            >
-              Admin
-            </a>
-          )}
+          <a 
+            href="#" 
+            style={{
+              color: 'var(--shade-01)',
+              textDecoration: 'none',
+              fontSize: 'var(--font-size-base)',
+              fontWeight: 'var(--font-weight-medium)',
+              padding: 'var(--space-2) var(--space-3)',
+              borderRadius: 'var(--radius-small)',
+              transition: 'background-color 0.2s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
+            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+            onClick={(e) => {
+              e.preventDefault()
+              handleNavigation('admin')
+            }}
+          >
+            Admin
+          </a>
           <a 
             href="#" 
             style={{
@@ -196,18 +187,7 @@ const Header = ({ navigateTo, hasClerk = false }: HeaderProps) => {
           >
             Playground
           </button>
-          {hasClerk ? (
-            <>
-              <SignedOut>
-                <SignInButton mode="modal" />
-              </SignedOut>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </>
-          ) : (
-            <button className="btn btn-primary">Sign In</button>
-          )}
+          <button className="btn btn-primary">Sign In</button>
         </div>
       </div>
     </header>
@@ -216,10 +196,24 @@ const Header = ({ navigateTo, hasClerk = false }: HeaderProps) => {
 
 export default Header
 
-// Admin link component that only renders for admin users
-import { useUser } from '@clerk/clerk-react'
+// Clerk auth buttons component
+const ClerkAuthButtons = () => {
+  const { SignedIn, SignedOut, SignInButton, UserButton } = require('@clerk/clerk-react')
+  return (
+    <>
+      <SignedOut>
+        <SignInButton mode="modal" />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
+    </>
+  )
+}
 
-const AdminLink = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
+// Clerk admin link component
+const ClerkAdminLink = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
+  const { SignedIn, useUser } = require('@clerk/clerk-react')
   const { user, isLoaded } = useUser()
   if (!isLoaded) return null
   const publicMeta = (user?.publicMetadata as Record<string, unknown> | undefined) || {}
@@ -236,26 +230,28 @@ const AdminLink = ({ onNavigate }: { onNavigate: (page: string) => void }) => {
   )
   if (!isAdmin) return null
   return (
-    <a 
-      href="#" 
-      style={{
-        color: 'var(--shade-01)',
-        textDecoration: 'none',
-        fontSize: 'var(--font-size-base)',
-        fontWeight: 'var(--font-weight-medium)',
-        padding: 'var(--space-2) var(--space-3)',
-        borderRadius: 'var(--radius-small)',
-        transition: 'background-color 0.2s ease',
-        cursor: 'pointer'
-      }}
-      onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-      onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-      onClick={(e) => {
-        e.preventDefault()
-        onNavigate('admin')
-      }}
-    >
-      Admin
-    </a>
+    <SignedIn>
+      <a 
+        href="#" 
+        style={{
+          color: 'var(--shade-01)',
+          textDecoration: 'none',
+          fontSize: 'var(--font-size-base)',
+          fontWeight: 'var(--font-weight-medium)',
+          padding: 'var(--space-2) var(--space-3)',
+          borderRadius: 'var(--radius-small)',
+          transition: 'background-color 0.2s ease',
+          cursor: 'pointer'
+        }}
+        onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
+        onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+        onClick={(e) => {
+          e.preventDefault()
+          onNavigate('admin')
+        }}
+      >
+        Admin
+      </a>
+    </SignedIn>
   )
 }

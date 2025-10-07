@@ -9,40 +9,42 @@ interface AppProps {
 }
 
 function App({ hasClerk = false }: AppProps) {
+  if (!hasClerk) {
+    return <Router />
+  }
+
   return (
     <>
-      {hasClerk ? (
-        <SignedOut>
+      <SignedOut>
+        <div style={{
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'var(--shade-08)'
+        }}>
           <div style={{
-            minHeight: '100vh',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: 'var(--shade-08)'
+            flexDirection: 'column',
+            gap: 'var(--space-4)',
+            padding: 'var(--space-8)',
+            background: 'var(--shade-10)',
+            border: `1px solid var(--shade-07)`,
+            borderRadius: 'var(--radius-medium)'
           }}>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'var(--space-4)',
-              padding: 'var(--space-8)',
-              background: 'var(--shade-10)',
-              border: `1px solid var(--shade-07)`,
-              borderRadius: 'var(--radius-medium)'
-            }}>
-              <div>
-                <h2 className="text-h4" style={{ marginBottom: 'var(--space-3)' }}>Create account</h2>
-                <SignUp routing="hash" />
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                <span className="text-small">Already have an account?</span>
-                <SignInButton mode="modal">
-                  <button className="btn btn-secondary">Sign in</button>
-                </SignInButton>
-              </div>
+            <div>
+              <h2 className="text-h4" style={{ marginBottom: 'var(--space-3)' }}>Create account</h2>
+              <SignUp routing="hash" />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+              <span className="text-small">Already have an account?</span>
+              <SignInButton mode="modal">
+                <button className="btn btn-secondary">Sign in</button>
+              </SignInButton>
             </div>
           </div>
-        </SignedOut>
-      ) : null}
+        </div>
+      </SignedOut>
       <SignedIn>
         <Router />
       </SignedIn>

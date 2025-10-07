@@ -2,9 +2,10 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 
 interface HeaderProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const Header = ({ navigateTo }: HeaderProps) => {
+const Header = ({ navigateTo, hasClerk = false }: HeaderProps) => {
   const handleNavigation = (page: string) => {
     if (navigateTo) {
       navigateTo(page)
@@ -136,10 +137,34 @@ const Header = ({ navigateTo }: HeaderProps) => {
           >
             Settings
           </a>
-          <SignedIn>
-            {/* Admin link visible to admins only */}
-            <AdminLink onNavigate={handleNavigation} />
-          </SignedIn>
+          {hasClerk ? (
+            <SignedIn>
+              {/* Admin link visible to admins only */}
+              <AdminLink onNavigate={handleNavigation} />
+            </SignedIn>
+          ) : (
+            <a 
+              href="#" 
+              style={{
+                color: 'var(--shade-01)',
+                textDecoration: 'none',
+                fontSize: 'var(--font-size-base)',
+                fontWeight: 'var(--font-weight-medium)',
+                padding: 'var(--space-2) var(--space-3)',
+                borderRadius: 'var(--radius-small)',
+                transition: 'background-color 0.2s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
+              onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+              onClick={(e) => {
+                e.preventDefault()
+                handleNavigation('admin')
+              }}
+            >
+              Admin
+            </a>
+          )}
           <a 
             href="#" 
             style={{
@@ -171,12 +196,18 @@ const Header = ({ navigateTo }: HeaderProps) => {
           >
             Playground
           </button>
-          <SignedOut>
-            <SignInButton mode="modal" />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          {hasClerk ? (
+            <>
+              <SignedOut>
+                <SignInButton mode="modal" />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </>
+          ) : (
+            <button className="btn btn-primary">Sign In</button>
+          )}
         </div>
       </div>
     </header>

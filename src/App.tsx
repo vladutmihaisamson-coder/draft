@@ -10,7 +10,7 @@ interface AppProps {
 
 function App({ hasClerk = false }: AppProps) {
   if (!hasClerk) {
-    return <Router />
+    return <Router hasClerk={false} />
   }
 
   return (
@@ -46,7 +46,7 @@ function App({ hasClerk = false }: AppProps) {
         </div>
       </SignedOut>
       <SignedIn>
-        <Router />
+        <Router hasClerk={true} />
       </SignedIn>
     </>
   )

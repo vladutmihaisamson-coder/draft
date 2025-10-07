@@ -3,9 +3,10 @@ import Tabs, { type TabItem } from '../components/Tabs'
 
 interface TabsPageProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const TabsPage = ({ navigateTo }: TabsPageProps) => {
+const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
   const items: TabItem[] = [
     { key: 'overview', label: 'Overview' },
     { key: 'details', label: 'Details' },
@@ -19,7 +20,7 @@ const TabsPage = ({ navigateTo }: TabsPageProps) => {
       width: '100vw',
       background: 'var(--shade-08)'
     }}>
-      <Header navigateTo={navigateTo} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
 
       <main style={{
         maxWidth: 'var(--max-width)',

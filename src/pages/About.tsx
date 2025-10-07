@@ -2,9 +2,10 @@ import Header from '../components/Header'
 
 interface AboutProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const About = ({ navigateTo }: AboutProps) => {
+const About = ({ navigateTo, hasClerk = false }: AboutProps) => {
   return (
     <div style={{ 
       minHeight: '100vh',
@@ -13,7 +14,7 @@ const About = ({ navigateTo }: AboutProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
       
       {/* Content section */}
       <section style={{

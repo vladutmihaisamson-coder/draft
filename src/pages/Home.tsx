@@ -6,9 +6,10 @@ import Pagination from '../components/Pagination'
 
 interface HomeProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const Home = ({ navigateTo }: HomeProps) => {
+const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(15)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -80,7 +81,7 @@ const Home = ({ navigateTo }: HomeProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
       
       {/* Cards section */}
       <section style={{

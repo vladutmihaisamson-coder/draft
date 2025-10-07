@@ -3,9 +3,10 @@ import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeade
 
 interface PlaygroundProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const Playground = ({ navigateTo }: PlaygroundProps) => {
+const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
   const rows = [
     { id: 1, name: 'Wireless Mouse', price: '$24.99', stock: 120 },
     { id: 2, name: 'Mechanical Keyboard', price: '$89.00', stock: 45 },
@@ -20,7 +21,7 @@ const Playground = ({ navigateTo }: PlaygroundProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
 
       <section style={{
         padding: 'var(--space-8)',

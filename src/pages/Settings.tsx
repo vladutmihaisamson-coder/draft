@@ -5,9 +5,10 @@ import Checkbox from '../components/Checkbox'
 
 interface SettingsProps {
   navigateTo?: (page: string) => void
+  hasClerk?: boolean
 }
 
-const Settings = ({ navigateTo }: SettingsProps) => {
+const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -35,7 +36,7 @@ const Settings = ({ navigateTo }: SettingsProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
       
       {/* Content section */}
       <section style={{

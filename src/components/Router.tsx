@@ -7,6 +7,10 @@ import Admin from '../pages/Admin'
 import Settings from '../pages/Settings'
 import Playground from '../pages/Playground'
 
+interface RouterProps {
+  hasClerk?: boolean
+}
+
 type Page = 'home' | 'about' | 'services' | 'settings' | 'tabs' | 'admin' | 'playground'
 
 const validPages: Page[] = ['home', 'about', 'services', 'settings', 'tabs', 'admin', 'playground']
@@ -14,7 +18,7 @@ const isPage = (value: string | null | undefined): value is Page => {
   return typeof value === 'string' && (validPages as string[]).includes(value)
 }
 
-const Router = () => {
+const Router = ({ hasClerk = false }: RouterProps) => {
   const [currentPage, setCurrentPage] = useState<Page>(() => {
     // Prefer URL hash if it matches a known page, else fall back to stored page
     const hash = window.location.hash.replace(/^#/, '')
@@ -51,7 +55,7 @@ const Router = () => {
   }, [])
 
   // Pass navigation function to all pages
-  const navigationProps = { navigateTo: navigateTo as (page: string) => void }
+  const navigationProps = { navigateTo: navigateTo as (page: string) => void, hasClerk }
 
   switch (currentPage) {
     case 'home':

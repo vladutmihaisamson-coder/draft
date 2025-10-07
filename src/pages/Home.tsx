@@ -13,7 +13,11 @@ const Home = ({ navigateTo }: HomeProps) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   // Table data - Products & Stock
-  const tableColumns = [
+  type ProductRow = {
+    sku: string; product: string; category: string; price: string; stock: number; reorder: number;
+  }
+  
+  const tableColumns: { key: keyof ProductRow; label: string; width?: string }[] = [
     { key: 'sku', label: 'SKU', width: '100px' },
     { key: 'product', label: 'Product' },
     { key: 'category', label: 'Category' },
@@ -23,7 +27,7 @@ const Home = ({ navigateTo }: HomeProps) => {
   ]
 
   // Generate product stock data
-  const allTableData = [
+  const allTableData: ProductRow[] = [
     { sku: 'SKU-0001', product: 'Wireless Mouse', category: 'Accessories', price: '$24.99', stock: 120, reorder: 50 },
     { sku: 'SKU-0002', product: 'Mechanical Keyboard', category: 'Accessories', price: '$89.00', stock: 45, reorder: 30 },
     { sku: 'SKU-0003', product: '27" 4K Monitor', category: 'Displays', price: '$329.99', stock: 18, reorder: 10 },

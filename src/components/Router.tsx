@@ -51,7 +51,7 @@ const Router = () => {
   }, [])
 
   // Pass navigation function to all pages
-  const navigationProps = { navigateTo }
+  const navigationProps = { navigateTo: navigateTo as (page: string) => void }
 
   switch (currentPage) {
     case 'home':

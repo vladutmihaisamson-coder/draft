@@ -11,7 +11,7 @@ import App from './App.tsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 
 const clerkPk = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY as string | undefined
-
+console.log("!!!!!!!!!!", clerkPk)
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {clerkPk ? (

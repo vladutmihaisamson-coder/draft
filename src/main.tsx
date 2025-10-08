@@ -16,10 +16,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {clerkPk ? (
       <ClerkProvider publishableKey={clerkPk}>
-        <App hasClerk={true} />
+        <App />
       </ClerkProvider>
     ) : (
-      <App hasClerk={false} />
+      <App />
     )}
   </StrictMode>,
 )

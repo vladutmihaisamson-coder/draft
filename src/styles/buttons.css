@@ -65,9 +65,9 @@
 
 .btn-secondary:disabled,
 .btn-secondary[aria-disabled="true"] {
-  background-color: var(--shade-07);
-  border-color: var(--shade-07);
-  color: var(--shade-04);
+  background-color: var(--medical-07);
+  border-color: var(--medical-07);
+  color: var(--medical-04);
 }
 
 /* Subtle button */
@@ -87,19 +87,19 @@
 
 .btn-subtle:disabled,
 .btn-subtle[aria-disabled="true"] {
-  color: var(--shade-04);
+  color: var(--medical-04);
 }
 
 /* Link style */
 .btn-link {
   background: transparent;
   border-color: transparent;
-  color: var(--shade-01);
+  color: var(--medical-01);
   text-decoration: underline;
 }
 
 .btn-link:hover {
-  color: var(--shade-00);
+  color: var(--medical-00);
 }
 
 /* Outline variants removed: secondary is the outline style */

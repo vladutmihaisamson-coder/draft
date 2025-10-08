@@ -34,48 +34,19 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
   // If Clerk is not available, show a simple admin page
   if (!hasClerk) {
     return (
-      <div style={{ minHeight: '100vh', width: '100vw', background: 'var(--shade-08)' }}>
+      <div className="page-container">
         <Header navigateTo={navigateTo} hasClerk={hasClerk} />
-        <main style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
-          <div style={{
-            background: 'var(--shade-10)',
-            border: `1px solid var(--shade-07)`,
-            borderRadius: 'var(--radius-medium)',
-            padding: 'var(--space-6)'
-          }}>
-            <h1 style={{
-              fontFamily: 'var(--font-family-primary)',
-              fontSize: 'var(--font-size-3xl)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--medical-01)',
-              marginBottom: 'var(--space-6)'
-            }}>
+        <main className="page-main">
+          <div className="card">
+            <h1 className="text-h1" style={{ marginBottom: 'var(--space-6)' }}>
               Admin Dashboard
             </h1>
-            <p style={{
-              fontFamily: 'var(--font-family-primary)',
-              fontSize: 'var(--font-size-base)',
-              color: 'var(--medical-02)',
-              lineHeight: 'var(--line-height-normal)',
-              marginBottom: 'var(--space-6)',
-              maxWidth: '600px'
-            }}>
+            <p className="text-body" style={{ marginBottom: 'var(--space-6)', maxWidth: '600px' }}>
               Manage medical staff, patient records, and system settings. Monitor healthcare operations and user access.
             </p>
             
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: 'var(--space-4)'
-            }}>
-              <h3 style={{
-                fontFamily: 'var(--font-family-primary)',
-                fontSize: 'var(--font-size-xl)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--medical-01)',
-                margin: 0
-              }}>Medical Staff</h3>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-h3">Medical Staff</h3>
               <Button 
                 variant="primary" 
                 icon="plus"
@@ -135,7 +106,7 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
             </div>
 
             <div style={{ height: 'var(--space-2)' }} />
-            <div className="text-small" style={{ color: 'var(--shade-03)' }}>
+            <div className="text-small" style={{ color: 'var(--medical-03)' }}>
               Note: Actions are illustrative. Hook these up to your admin APIs.
             </div>
           </div>
@@ -145,12 +116,12 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', width: '100vw', background: 'var(--shade-08)' }}>
+    <div style={{ minHeight: '100vh', width: '100vw', background: 'var(--medical-08)' }}>
       <Header navigateTo={navigateTo} hasClerk={hasClerk} />
         <main style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
         <div style={{
-          background: 'var(--shade-10)',
-          border: `1px solid var(--shade-07)`,
+          background: 'var(--medical-10)',
+          border: `1px solid var(--medical-07)`,
           borderRadius: 'var(--radius-medium)',
           padding: 'var(--space-6)'
         }}>
@@ -212,7 +183,7 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
           </div>
 
           <div style={{ height: 'var(--space-2)' }} />
-          <div className="text-small" style={{ color: 'var(--shade-03)' }}>
+          <div className="text-small" style={{ color: 'var(--medical-03)' }}>
             Note: Actions are illustrative. Hook these up to your admin APIs.
           </div>
         </div>

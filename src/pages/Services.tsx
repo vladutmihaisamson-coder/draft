@@ -11,7 +11,7 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
     <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)',
+      background: 'var(--medical-08)',
       margin: 0,
       padding: 0
     }}>

@@ -61,89 +61,66 @@ export function MedicalWidget({
 
   return (
     <div
-      className={className}
-      style={{
-        background: 'var(--medical-10)',
-        border: '1px solid var(--medical-07)',
-        borderRadius: 'var(--radius-medium)',
-        padding: 'var(--space-6)',
-        minHeight: '228px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        ...style
-      }}
+      className={`widget ${className || ''}`}
+      style={style}
       {...rest}
     >
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-4)' }}>
+      <div className="medical-widget-header">
         <div>
-          <h3 style={{
-            fontSize: 'var(--font-size-lg)',
-            fontWeight: 'var(--font-weight-semibold)',
-            color: 'var(--medical-01)',
-            margin: 0,
-            marginBottom: 'var(--space-1)'
-          }}>
+          <h3 className="widget-title">
             {title}
           </h3>
           {location && (
-            <p style={{
-              fontSize: 'var(--font-size-sm)',
-              color: 'var(--medical-05)',
-              margin: 0
-            }}>
+            <p className="widget-location">
               {location}
             </p>
           )}
         </div>
         {status !== 'normal' && (
-          <div style={{
-            width: '8px',
-            height: '8px',
-            borderRadius: '50%',
-            background: getStatusColor(status),
-            flexShrink: 0
-          }} />
+          <div 
+            className={`medical-widget-status medical-widget-status--${status}`}
+            style={{ background: getStatusColor(status) }}
+          />
         )}
       </div>
 
       {/* Main Value */}
-      <div style={{ marginBottom: 'var(--space-4)' }}>
-        <div style={{
-          fontSize: 'var(--font-size-4xl)',
-          fontWeight: 'var(--font-weight-bold)',
-          color: trend === 'up' ? 'var(--medical-success)' : trend === 'down' ? 'var(--medical-error)' : 'var(--medical-01)',
-          lineHeight: 1,
-          marginBottom: 'var(--space-2)'
-        }}>
+      <div className="medical-widget-main">
+        <div 
+          className="widget-value"
+          style={{
+            fontSize: 'var(--font-size-4xl)',
+            color: trend === 'up' ? 'var(--medical-success)' : trend === 'down' ? 'var(--medical-error)' : 'var(--medical-01)',
+            lineHeight: 1,
+            marginBottom: 'var(--space-2)'
+          }}
+        >
           {value}
         </div>
         {subtitle && (
-          <p style={{
-            fontSize: 'var(--font-size-sm)',
-            color: 'var(--medical-05)',
-            margin: 0
-          }}>
+          <p className="widget-subtitle">
             {subtitle}
           </p>
         )}
       </div>
 
       {/* Trend and Description */}
-      <div style={{ marginTop: 'auto' }}>
+      <div className="medical-widget-footer">
         {trend && trendValue && (
-          <div style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: 'var(--space-2)',
-            marginBottom: 'var(--space-3)',
-            padding: 'var(--space-2) var(--space-3)',
-            borderRadius: 'var(--radius-small)',
-            background: getTrendBackgroundColor(trend),
-            border: `1px solid ${getTrendColor(trend)}20` // 20% opacity border
-          }}>
+          <div 
+            className="widget-trend"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'var(--space-2)',
+              marginBottom: 'var(--space-3)',
+              padding: 'var(--space-2) var(--space-3)',
+              borderRadius: 'var(--radius-small)',
+              background: getTrendBackgroundColor(trend),
+              border: `1px solid ${getTrendColor(trend)}20` // 20% opacity border
+            }}
+          >
             <span style={{
               fontSize: 'var(--font-size-lg)',
               color: getTrendColor(trend)
@@ -160,12 +137,7 @@ export function MedicalWidget({
           </div>
         )}
         {description && (
-          <p style={{
-            fontSize: 'var(--font-size-sm)',
-            color: 'var(--medical-04)',
-            margin: 0,
-            lineHeight: 1.4
-          }}>
+          <p className="widget-description">
             {description}
           </p>
         )}

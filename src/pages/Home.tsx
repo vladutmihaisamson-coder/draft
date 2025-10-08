@@ -74,27 +74,12 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
 
 
   return (
-    <div style={{ 
-      minHeight: '100vh',
-      width: '100vw',
-      background: 'var(--shade-08)',
-      margin: 0,
-      padding: 0
-    }}>
+    <div className="page-container">
       <Header navigateTo={navigateTo} hasClerk={hasClerk} />
       
       {/* Cards section */}
-      <section style={{
-        padding: '0 var(--space-6) var(--space-5)', // 0 top, 24px left/right, 20px bottom
-        width: '100%'
-      }}>
-        <div style={{
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 'var(--space-3)', // 12px gap between cards
-          alignItems: 'start'
-        }}>
+      <section className="page-section">
+        <div className="page-grid">
           <MedicalWidget 
             title="Active Patients"
             value="1,234"
@@ -139,10 +124,7 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
       </section>
 
       {/* Table section - Full width */}
-      <section style={{
-        padding: '0 var(--space-6) var(--space-8)', // 24px LR padding to avoid touching edges
-        width: '100%'
-      }}>
+      <section className="page-section" style={{ paddingBottom: 'var(--space-8)' }}>
         <DataTable resizable>
           <DataTableHeader>
             <DataTableRow hoverable={false}>

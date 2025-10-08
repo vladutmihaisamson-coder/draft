@@ -62,71 +62,37 @@ const StatWidget = ({
 
   return (
     <div
-      style={{
-        background: 'var(--medical-10)',
-        border: '1px solid var(--medical-07)',
-        borderRadius: 'var(--radius-medium)',
-        padding: 'var(--space-6)',
-        minHeight: '228px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        position: 'relative',
-        ...style
-      }}
+      className="widget"
+      style={style}
       {...rest}
     >
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--space-1)',
-        marginBottom: 'var(--space-4)'
-      }}>
-        <h3 style={{
-          fontFamily: 'var(--font-family-primary)',
-          fontSize: 'var(--font-size-lg)',
-          fontWeight: 'var(--font-weight-semibold)',
-          color: 'var(--medical-01)',
-          margin: 0,
-          lineHeight: 'var(--line-height-tight)'
-        }}>
+      <div className="stat-widget-header">
+        <h3 className="widget-title">
           {title}
         </h3>
-        <div style={{
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: 'var(--space-2)'
-        }}>
-          <span style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-3xl)',
-            fontWeight: 'var(--font-weight-bold)',
-            color: trend ? getTrendColor(trend) : 'var(--medical-01)',
-            lineHeight: 'var(--line-height-none)'
-          }}>
+        <div className="stat-widget-value-container">
+          <span 
+            className="widget-value"
+            style={{
+              color: trend ? getTrendColor(trend) : 'var(--medical-01)',
+            }}
+          >
             {value}
           </span>
           {trendValue && (
-            <span style={{
-              fontFamily: 'var(--font-family-primary)',
-              fontSize: 'var(--font-size-sm)',
-              fontWeight: 'var(--font-weight-medium)',
-              color: getTrendColor(trend),
-              lineHeight: 'var(--line-height-tight)'
-            }}>
+            <span 
+              className="widget-trend"
+              style={{
+                color: getTrendColor(trend),
+              }}
+            >
               {trendValue}
             </span>
           )}
         </div>
         {subtitle && (
-          <p style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-sm)',
-            fontWeight: 'var(--font-weight-medium)',
-            color: 'var(--medical-02)',
-            margin: 0
-          }}>
+          <p className="widget-subtitle">
             {subtitle}
           </p>
         )}

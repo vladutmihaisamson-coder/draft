@@ -13,7 +13,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--shade-01);
+  color: var(--medical-01);
   margin-bottom: var(--space-2);
   line-height: var(--line-height-tight);
 }
@@ -136,7 +136,7 @@
 .field-textarea:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  background-color: var(--shade-08);
+  background-color: var(--medical-08);
 }
 
 .field-textarea--error {
@@ -186,7 +186,7 @@
 .field-select:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  background-color: var(--shade-08);
+  background-color: var(--medical-08);
 }
 
 .field-select--error {
@@ -207,14 +207,14 @@
   cursor: pointer;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
-  color: var(--shade-01);
+  color: var(--medical-01);
   line-height: var(--line-height-normal);
   transition: all 0.2s ease;
 }
 
 .field-checkbox:hover:not(.field-checkbox--disabled),
 .field-radio:hover:not(.field-radio--disabled) {
-  color: var(--shade-00);
+  color: var(--medical-00);
 }
 
 .field-checkbox input,
@@ -223,7 +223,7 @@
   height: 1rem;
   margin: 0;
   cursor: pointer;
-  accent-color: var(--shade-01);
+  accent-color: var(--medical-01);
   transition: all 0.2s ease;
 }
 
@@ -262,7 +262,7 @@
 .field-checkbox--disabled .field-checkbox-label,
 .field-radio--disabled .field-radio-label {
   cursor: not-allowed;
-  color: var(--shade-04);
+  color: var(--medical-04);
 }
 
 /* Checkbox size variants */
@@ -313,7 +313,7 @@
   margin-top: var(--space-1);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
-  color: var(--shade-02);
+  color: var(--medical-02);
   line-height: var(--line-height-tight);
 }
 

@@ -32,7 +32,7 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
     <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)',
+      background: 'var(--medical-08)',
       margin: 0,
       padding: 0
     }}>
@@ -211,7 +211,7 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
               justifyContent: 'flex-end',
               marginTop: 'var(--space-8)',
               paddingTop: 'var(--space-6)',
-              borderTop: '1px solid var(--shade-07)'
+              borderTop: '1px solid var(--medical-07)'
             }}>
               <button
                 className="btn btn-secondary"

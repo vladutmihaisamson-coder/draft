@@ -25,13 +25,13 @@ const Pagination = ({
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: 'var(--space-4) var(--space-6)',
-      background: 'var(--shade-10)',
-      border: '1px solid var(--shade-07)',
+      background: 'var(--medical-10)',
+      border: '1px solid var(--medical-07)',
       borderTop: 'none',
       borderRadius: '0 0 var(--radius-medium) var(--radius-medium)',
       fontFamily: 'var(--font-family-primary)',
       fontSize: 'var(--font-size-sm)',
-      color: 'var(--shade-02)'
+      color: 'var(--medical-02)'
     }}>
       {/* Items per page selector */}
       <div style={{
@@ -45,10 +45,10 @@ const Pagination = ({
           onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
           style={{
             padding: 'var(--space-1) var(--space-2)',
-            border: '1px solid var(--shade-07)',
+            border: '1px solid var(--medical-07)',
             borderRadius: 'var(--radius-xs)',
-            background: 'var(--shade-10)',
-            color: 'var(--shade-01)',
+            background: 'var(--medical-10)',
+            color: 'var(--medical-01)',
             fontSize: 'var(--font-size-sm)',
             fontFamily: 'var(--font-family-primary)',
             cursor: 'pointer'
@@ -84,10 +84,10 @@ const Pagination = ({
             disabled={currentPage === 1}
             style={{
               padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--shade-07)',
+              border: '1px solid var(--medical-07)',
               borderRadius: 'var(--radius-xs)',
-              background: currentPage === 1 ? 'var(--shade-08)' : 'var(--shade-10)',
-              color: currentPage === 1 ? 'var(--shade-04)' : 'var(--shade-01)',
+              background: currentPage === 1 ? 'var(--medical-08)' : 'var(--medical-10)',
+              color: currentPage === 1 ? 'var(--medical-04)' : 'var(--medical-01)',
               fontSize: 'var(--font-size-sm)',
               fontFamily: 'var(--font-family-primary)',
               cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
@@ -102,10 +102,10 @@ const Pagination = ({
             disabled={currentPage === 1}
             style={{
               padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--shade-07)',
+              border: '1px solid var(--medical-07)',
               borderRadius: 'var(--radius-xs)',
-              background: currentPage === 1 ? 'var(--shade-08)' : 'var(--shade-10)',
-              color: currentPage === 1 ? 'var(--shade-04)' : 'var(--shade-01)',
+              background: currentPage === 1 ? 'var(--medical-08)' : 'var(--medical-10)',
+              color: currentPage === 1 ? 'var(--medical-04)' : 'var(--medical-01)',
               fontSize: 'var(--font-size-sm)',
               fontFamily: 'var(--font-family-primary)',
               cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
@@ -124,10 +124,10 @@ const Pagination = ({
                 onClick={() => onPageChange(pageNum)}
                 style={{
                   padding: 'var(--space-1) var(--space-2)',
-                  border: '1px solid var(--shade-07)',
+                  border: '1px solid var(--medical-07)',
                   borderRadius: 'var(--radius-xs)',
-                  background: currentPage === pageNum ? 'var(--primary-01)' : 'var(--shade-10)',
-                  color: currentPage === pageNum ? 'var(--shade-10)' : 'var(--shade-01)',
+                  background: currentPage === pageNum ? 'var(--primary-01)' : 'var(--medical-10)',
+                  color: currentPage === pageNum ? 'var(--medical-10)' : 'var(--medical-01)',
                   fontSize: 'var(--font-size-sm)',
                   fontFamily: 'var(--font-family-primary)',
                   cursor: 'pointer',
@@ -144,10 +144,10 @@ const Pagination = ({
             disabled={currentPage === totalPages}
             style={{
               padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--shade-07)',
+              border: '1px solid var(--medical-07)',
               borderRadius: 'var(--radius-xs)',
-              background: currentPage === totalPages ? 'var(--shade-08)' : 'var(--shade-10)',
-              color: currentPage === totalPages ? 'var(--shade-04)' : 'var(--shade-01)',
+              background: currentPage === totalPages ? 'var(--medical-08)' : 'var(--medical-10)',
+              color: currentPage === totalPages ? 'var(--medical-04)' : 'var(--medical-01)',
               fontSize: 'var(--font-size-sm)',
               fontFamily: 'var(--font-family-primary)',
               cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
@@ -162,10 +162,10 @@ const Pagination = ({
             disabled={currentPage === totalPages}
             style={{
               padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--shade-07)',
+              border: '1px solid var(--medical-07)',
               borderRadius: 'var(--radius-xs)',
-              background: currentPage === totalPages ? 'var(--shade-08)' : 'var(--shade-10)',
-              color: currentPage === totalPages ? 'var(--shade-04)' : 'var(--shade-01)',
+              background: currentPage === totalPages ? 'var(--medical-08)' : 'var(--medical-10)',
+              color: currentPage === totalPages ? 'var(--medical-04)' : 'var(--medical-01)',
               fontSize: 'var(--font-size-sm)',
               fontFamily: 'var(--font-family-primary)',
               cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',

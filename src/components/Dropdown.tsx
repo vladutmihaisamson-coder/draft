@@ -34,40 +34,13 @@ const Dropdown = ({ label, items, className, style }: DropdownProps) => {
   return (
     <div 
       ref={dropdownRef}
-      style={{ 
-        position: 'relative',
-        display: 'inline-block',
-        ...style 
-      }}
-      className={className}
+      className={`dropdown ${className || ''}`}
+      style={style}
     >
       {/* Dropdown Trigger */}
       <button
+        className="dropdown-trigger"
         onClick={() => setIsOpen(!isOpen)}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 'var(--space-2)',
-          color: 'var(--medical-02)',
-          textDecoration: 'none',
-          fontSize: 'var(--font-size-base)',
-          fontWeight: 'var(--font-weight-medium)',
-          padding: 'var(--space-2) var(--space-3)',
-          borderRadius: 'var(--radius-small)',
-          transition: 'all var(--transition-normal)',
-          cursor: 'pointer',
-          background: 'transparent',
-          border: 'none',
-          outline: 'none'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = 'var(--medical-primary)'
-          e.currentTarget.style.background = 'var(--medical-08)'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = 'var(--medical-02)'
-          e.currentTarget.style.background = 'transparent'
-        }}
       >
         {label}
         <span style={{
@@ -88,63 +61,24 @@ const Dropdown = ({ label, items, className, style }: DropdownProps) => {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: '0',
-            minWidth: '200px',
-            background: 'var(--medical-10)',
-            border: '1px solid var(--medical-07)',
-            borderRadius: 'var(--radius-medium)',
-            boxShadow: 'var(--glass-shadow)',
-            backdropFilter: 'blur(10px)',
-            zIndex: 1000,
-            marginTop: 'var(--space-1)',
-            overflow: 'hidden'
-          }}
-        >
+        <div className="dropdown-menu">
           {items.map((item, index) => (
             <button
               key={index}
+              className="dropdown-item"
               onClick={() => {
                 item.onClick()
                 setIsOpen(false)
               }}
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'var(--space-2)',
-                padding: 'var(--space-3) var(--space-4)',
-                color: 'var(--medical-01)',
-                fontSize: 'var(--font-size-base)',
-                fontWeight: 'var(--font-weight-medium)',
-                background: 'transparent',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all var(--transition-normal)',
-                textAlign: 'left'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'var(--medical-08)'
-                e.currentTarget.style.color = 'var(--medical-primary)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent'
-                e.currentTarget.style.color = 'var(--medical-01)'
-              }}
             >
               {item.icon && (
-                <span style={{ 
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  fontSize: 'var(--font-size-base)'
-                }}>
+                <span className="dropdown-item-icon">
                   {item.icon}
                 </span>
               )}
-              {item.label}
+              <span className="dropdown-item-text">
+                {item.label}
+              </span>
             </button>
           ))}
         </div>

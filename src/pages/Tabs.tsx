@@ -170,7 +170,7 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
     <div style={{
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)'
+      background: 'var(--medical-08)'
     }}>
       <Header navigateTo={navigateTo} hasClerk={hasClerk} />
 

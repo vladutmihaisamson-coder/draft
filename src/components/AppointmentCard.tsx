@@ -74,103 +74,42 @@ const AppointmentCard = ({
 
   return (
     <div
-      style={{
-        background: 'var(--medical-10)',
-        border: '1px solid var(--medical-07)',
-        borderRadius: 'var(--radius-medium)',
-        padding: 'var(--space-5)',
-        transition: 'all var(--transition-normal)',
-        cursor: 'pointer',
-        position: 'relative',
-        ...style
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = 'var(--medical-primary)'
-        e.currentTarget.style.boxShadow = 'var(--glass-shadow)'
-        e.currentTarget.style.transform = 'translateY(-2px)'
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = 'var(--medical-07)'
-        e.currentTarget.style.boxShadow = 'none'
-        e.currentTarget.style.transform = 'translateY(0)'
-      }}
+      className="appointment-card"
+      style={style}
       {...rest}
     >
       {/* Header with ID and Priority */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 'var(--space-3)'
-      }}>
-        <span style={{
-          fontFamily: 'var(--font-family-primary)',
-          fontSize: 'var(--font-size-sm)',
-          fontWeight: 'var(--font-weight-medium)',
-          color: 'var(--medical-02)'
-        }}>
+      <div className="appointment-card-header">
+        <span className="appointment-card-id">
           {appointmentId}
         </span>
-        <span style={{
-          padding: 'var(--space-1) var(--space-2)',
-          borderRadius: 'var(--radius-xs)',
-          fontSize: 'var(--font-size-xs)',
-          fontWeight: 'var(--font-weight-medium)',
-          background: getPriorityColor(priority),
-          color: 'var(--medical-10)'
-        }}>
+        <span 
+          className={`appointment-card-priority appointment-card-priority--${priority.toLowerCase()}`}
+          style={{ background: getPriorityColor(priority) }}
+        >
           {priority}
         </span>
       </div>
 
       {/* Patient and Doctor */}
-      <div style={{
-        marginBottom: 'var(--space-4)'
-      }}>
-        <h3 style={{
-          fontFamily: 'var(--font-family-primary)',
-          fontSize: 'var(--font-size-lg)',
-          fontWeight: 'var(--font-weight-semibold)',
-          color: 'var(--medical-01)',
-          margin: '0 0 var(--space-1) 0'
-        }}>
+      <div className="appointment-card-content">
+        <h3 className="appointment-card-patient">
           {patient}
         </h3>
-        <p style={{
-          fontFamily: 'var(--font-family-primary)',
-          fontSize: 'var(--font-size-base)',
-          color: 'var(--medical-02)',
-          margin: 0
-        }}>
+        <p className="appointment-card-doctor">
           with {doctor}
         </p>
       </div>
 
       {/* Time and Type */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 'var(--space-4)'
-      }}>
-        <div>
-          <p style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-sm)',
-            fontWeight: 'var(--font-weight-medium)',
-            color: 'var(--medical-01)',
-            margin: '0 0 var(--space-1) 0'
-          }}>
-            {time}
-          </p>
-          <p style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-sm)',
-            color: 'var(--medical-02)',
-            margin: 0
-          }}>
-            {type}
-          </p>
+      <div className="appointment-card-details">
+        <div className="appointment-card-detail">
+          <p className="appointment-card-detail-label">Time</p>
+          <p className="appointment-card-detail-value">{time}</p>
+        </div>
+        <div className="appointment-card-detail">
+          <p className="appointment-card-detail-label">Type</p>
+          <p className="appointment-card-detail-value">{type}</p>
         </div>
       </div>
 
@@ -196,10 +135,7 @@ const AppointmentCard = ({
       )}
 
       {/* Status Badge */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'flex-end'
-      }}>
+      <div className="appointment-card-footer">
         <span style={{
           padding: status === 'Confirmed' ? '0' : 'var(--space-2) var(--space-3)',
           borderRadius: status === 'Confirmed' ? '0' : 'var(--radius-small)',

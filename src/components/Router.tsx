@@ -32,7 +32,9 @@ const Router = ({ hasClerk = false }: RouterProps) => {
     setCurrentPage(page)
     try {
       localStorage.setItem('currentPage', page)
-    } catch {}
+    } catch {
+      // Ignore localStorage errors
+    }
     // Keep the URL hash in sync so refresh/back/forward behave predictably
     if (window.location.hash.replace(/^#/, '') !== page) {
       window.location.hash = page
@@ -47,7 +49,9 @@ const Router = ({ hasClerk = false }: RouterProps) => {
         setCurrentPage(next)
         try {
           localStorage.setItem('currentPage', next)
-        } catch {}
+        } catch {
+          // Ignore localStorage errors
+        }
       }
     }
     window.addEventListener('hashchange', onHashChange)

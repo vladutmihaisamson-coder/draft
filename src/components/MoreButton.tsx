@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from 'react'
 
-interface MoreButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type MoreButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
   return (

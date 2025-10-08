@@ -1,5 +1,6 @@
 import type { ReactNode, TableHTMLAttributes } from 'react'
-import { createContext, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { DataTableResizeContext, type DataTableResizeContextValue } from './DataTableContext'
 
 interface DataTableProps extends TableHTMLAttributes<HTMLTableElement> {
   children: ReactNode
@@ -8,14 +9,6 @@ interface DataTableProps extends TableHTMLAttributes<HTMLTableElement> {
   onColumnResize?: (nextWidths: Record<string, number>) => void
 }
 
-export interface DataTableResizeContextValue {
-  resizable: boolean
-  widths: Record<string, number>
-  startResize: (args: { columnKey: string, currentWidth?: number, minWidth?: number }) => void
-}
-
-export const DataTableResizeContext = createContext<DataTableResizeContextValue | null>(null)
-
 const DataTable = ({ children, fixedLayout = true, resizable = false, onColumnResize, style, ...rest }: DataTableProps) => {
   const [widths, setWidths] = useState<Record<string, number>>({})
   const isResizingKeyRef = useRef<string | null>(null)
@@ -23,16 +16,16 @@ const DataTable = ({ children, fixedLayout = true, resizable = false, onColumnRe
   const startWidthRef = useRef<number>(0)
   const minWidthRef = useRef<number>(120)
 
-  const startResize = ({ columnKey, currentWidth, minWidth = 120 }: { columnKey: string, currentWidth?: number, minWidth?: number }) => {
+  const startResize = useCallback(({ columnKey, currentWidth, minWidth = 120 }: { columnKey: string, currentWidth?: number, minWidth?: number }) => {
     if (!resizable) return
     isResizingKeyRef.current = columnKey
-    startXRef.current = (window as any).event?.clientX ?? 0
+    startXRef.current = (window.event as MouseEvent)?.clientX ?? 0
     startWidthRef.current = currentWidth ?? widths[columnKey] ?? minWidth
     minWidthRef.current = Math.max(minWidth, 60)
     document.body.style.cursor = 'col-resize'
     document.body.style.userSelect = 'none'
-    ;(document.body.style as any).webkitUserSelect = 'none'
-  }
+    ;(document.body.style as CSSStyleDeclaration & { webkitUserSelect?: string }).webkitUserSelect = 'none'
+  }, [resizable, widths])
 
   useEffect(() => {
     if (!resizable) return
@@ -52,7 +45,7 @@ const DataTable = ({ children, fixedLayout = true, resizable = false, onColumnRe
       isResizingKeyRef.current = null
       document.body.style.cursor = ''
       document.body.style.userSelect = ''
-      ;(document.body.style as any).webkitUserSelect = ''
+      ;(document.body.style as CSSStyleDeclaration & { webkitUserSelect?: string }).webkitUserSelect = ''
     }
     window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('mouseup', onMouseUp)
@@ -64,7 +57,7 @@ const DataTable = ({ children, fixedLayout = true, resizable = false, onColumnRe
 
   const ctx = useMemo<DataTableResizeContextValue | null>(() => {
     return resizable ? { resizable, widths, startResize } : { resizable: false, widths: {}, startResize: () => {} }
-  }, [resizable, widths])
+  }, [resizable, widths, startResize])
 
   return (
     <DataTableResizeContext.Provider value={ctx}>

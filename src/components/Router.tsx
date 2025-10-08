@@ -5,15 +5,16 @@ import Services from '../pages/Services'
 import TabsPage from '../pages/Tabs'
 import Admin from '../pages/Admin'
 import Settings from '../pages/Settings'
+import OrganizationSettings from '../pages/OrganizationSettings'
 import Playground from '../pages/Playground'
 
 interface RouterProps {
   hasClerk?: boolean
 }
 
-type Page = 'home' | 'about' | 'services' | 'settings' | 'tabs' | 'admin' | 'playground'
+type Page = 'home' | 'about' | 'services' | 'settings' | 'organization-settings' | 'tabs' | 'admin' | 'playground'
 
-const validPages: Page[] = ['home', 'about', 'services', 'settings', 'tabs', 'admin', 'playground']
+const validPages: Page[] = ['home', 'about', 'services', 'settings', 'organization-settings', 'tabs', 'admin', 'playground']
 const isPage = (value: string | null | undefined): value is Page => {
   return typeof value === 'string' && (validPages as string[]).includes(value)
 }
@@ -27,6 +28,30 @@ const Router = ({ hasClerk = false }: RouterProps) => {
     if (isPage(stored)) return stored
     return 'home'
   })
+
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  // Handle scroll detection at the app level
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop
+      const shouldBeScrolled = scrollTop > 0
+      setIsScrolled(shouldBeScrolled)
+    }
+
+    // Check initial scroll position
+    const initialScroll = window.scrollY || document.documentElement.scrollTop
+    setIsScrolled(initialScroll > 0)
+
+    // Use both scroll and wheel events
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('wheel', handleScroll, { passive: true })
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('wheel', handleScroll)
+    }
+  }, [])
 
   const navigateTo = (page: Page) => {
     setCurrentPage(page)
@@ -58,8 +83,17 @@ const Router = ({ hasClerk = false }: RouterProps) => {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  // Pass navigation function to all pages
-  const navigationProps = { navigateTo: navigateTo as (page: string) => void, hasClerk }
+  // Pass navigation function and scroll state to all pages
+  const navigationProps = { 
+    navigateTo: navigateTo as (page: string) => void, 
+    hasClerk, 
+    isScrolled,
+    // Add manual toggle for testing
+    toggleScroll: () => {
+      console.log('Manual toggle from Router')
+      setIsScrolled(!isScrolled)
+    }
+  }
 
   switch (currentPage) {
     case 'home':
@@ -70,6 +104,8 @@ const Router = ({ hasClerk = false }: RouterProps) => {
       return <Services {...navigationProps} />
     case 'settings':
       return <Settings {...navigationProps} />
+    case 'organization-settings':
+      return <OrganizationSettings {...navigationProps} />
     case 'tabs':
       return <TabsPage {...navigationProps} />
     case 'admin':

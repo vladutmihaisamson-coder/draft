@@ -28,14 +28,14 @@ export const DataTableRow = ({ children, selected, hoverable = true, style, ...r
   return (
     <tr
       style={{
-        borderBottom: `1px solid var(--shade-07)`,
+        borderBottom: `1px solid var(--medical-07)`,
         transition: 'background-color 0.2s ease',
-        background: selected ? 'var(--shade-09)' : undefined,
+        background: selected ? 'var(--medical-08)' : undefined,
         ...style
       }}
       onMouseEnter={(e) => {
         if (!hoverable || selected) return
-        e.currentTarget.style.backgroundColor = 'var(--shade-09)'
+        e.currentTarget.style.backgroundColor = 'var(--medical-08)'
       }}
       onMouseLeave={(e) => {
         if (!hoverable || selected) return
@@ -70,8 +70,7 @@ export const DataTableHeaderCell = ({ children, widthPx, minWidthPx = 120, colum
         textAlign: 'left',
         fontWeight: 'var(--font-weight-semibold)',
         fontSize: 'var(--font-size-sm)',
-        color: 'var(--shade-01)',
-        borderRight: `1px solid var(--shade-07)`,
+        color: 'var(--medical-01)',
         width: effectiveWidth ? `${effectiveWidth}px` : undefined,
         minWidth: `${Math.max(minWidthPx, 60)}px`,
         whiteSpace: 'nowrap',
@@ -128,8 +127,7 @@ export const DataTableCell = ({ children, widthPx, minWidthPx = 120, columnKey, 
     <td
       style={{
         padding: 'var(--space-4) var(--space-6)',
-        color: 'var(--shade-01)',
-        borderRight: `1px solid var(--shade-07)`,
+        color: 'var(--medical-01)',
         verticalAlign: 'top',
         width: effectiveWidth ? `${effectiveWidth}px` : undefined,
         minWidth: `${Math.max(minWidthPx, 60)}px`,

@@ -14,19 +14,19 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
         width: 32,
         height: 32,
         padding: 0,
-        borderRadius: 'var(--radius-small)',
-        border: `1px solid var(--shade-07)`,
-        background: 'var(--shade-10)',
-        color: 'var(--shade-02)',
+        borderRadius: 'var(--radius-medium)',
+        border: `1px solid var(--medical-07)`,
+        background: 'var(--medical-10)',
+        color: 'var(--medical-02)',
         cursor: 'pointer',
         transition: 'background-color 0.2s ease, border-color 0.2s ease',
         ...style
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--shade-09)'
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--medical-09)'
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--shade-10)'
+        (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--medical-10)'
       }}
       {...rest}
     >
@@ -45,7 +45,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
         <span style={{
           position: 'absolute',
@@ -55,7 +55,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
         <span style={{
           position: 'absolute',
@@ -65,7 +65,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
       </span>
     </button>

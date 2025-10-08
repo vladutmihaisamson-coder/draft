@@ -4,24 +4,27 @@ import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeade
 interface PlaygroundProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
-  const rows = [
-    { id: 1, name: 'Wireless Mouse', price: '$24.99', stock: 120 },
-    { id: 2, name: 'Mechanical Keyboard', price: '$89.00', stock: 45 },
-    { id: 3, name: '27" 4K Monitor', price: '$329.99', stock: 18 }
+const Playground = ({ navigateTo, hasClerk = false, isScrolled = false }: PlaygroundProps) => {
+  const emergencyCases = [
+    { id: 'EM-001', patient: 'John Smith', condition: 'Chest Pain', priority: 'Critical', status: 'In Progress' },
+    { id: 'EM-002', patient: 'Sarah Johnson', condition: 'Severe Allergic Reaction', priority: 'High', status: 'Stabilized' },
+    { id: 'EM-003', patient: 'Michael Brown', condition: 'Trauma - Car Accident', priority: 'Critical', status: 'Surgery' },
+    { id: 'EM-004', patient: 'Emily Davis', condition: 'Stroke Symptoms', priority: 'High', status: 'Monitoring' },
+    { id: 'EM-005', patient: 'Robert Wilson', condition: 'Heart Attack', priority: 'Critical', status: 'Recovery' }
   ]
 
   return (
     <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)',
+      background: 'var(--medical-08)',
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
 
       <section style={{
         padding: 'var(--space-8)',
@@ -34,16 +37,26 @@ const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--space-6)'
+          gap: 'var(--space-3)'
         }}>
           <h1 style={{
             fontFamily: 'var(--font-family-primary)',
             fontSize: 'var(--font-size-3xl)',
             fontWeight: 'var(--font-weight-bold)',
-            color: 'var(--shade-01)'
+            color: 'var(--medical-01)'
           }}>
-            Playground
+            Emergency Department
           </h1>
+          
+          <p style={{
+            fontFamily: 'var(--font-family-primary)',
+            fontSize: 'var(--font-size-lg)',
+            color: 'var(--medical-02)',
+            lineHeight: 'var(--line-height-normal)',
+            maxWidth: '600px'
+          }}>
+            Real-time emergency case monitoring and critical patient management system for immediate medical response.
+          </p>
         </div>
       </section>
 
@@ -55,19 +68,32 @@ const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
         <DataTable>
           <DataTableHeader>
             <DataTableRow>
-              <DataTableHeaderCell widthPx={140}>ID</DataTableHeaderCell>
-              <DataTableHeaderCell>Name</DataTableHeaderCell>
-              <DataTableHeaderCell widthPx={140}>Price</DataTableHeaderCell>
-              <DataTableHeaderCell widthPx={140}>Stock</DataTableHeaderCell>
+              <DataTableHeaderCell widthPx={120}>Case ID</DataTableHeaderCell>
+              <DataTableHeaderCell>Patient</DataTableHeaderCell>
+              <DataTableHeaderCell>Condition</DataTableHeaderCell>
+              <DataTableHeaderCell widthPx={120}>Priority</DataTableHeaderCell>
+              <DataTableHeaderCell widthPx={140}>Status</DataTableHeaderCell>
             </DataTableRow>
           </DataTableHeader>
           <DataTableBody>
-            {rows.map((row) => (
-              <DataTableRow key={row.id} hoverable>
-                <DataTableCell widthPx={140}>{row.id}</DataTableCell>
-                <DataTableCell>{row.name}</DataTableCell>
-                <DataTableCell widthPx={140}>{row.price}</DataTableCell>
-                <DataTableCell widthPx={140}>{row.stock}</DataTableCell>
+            {emergencyCases.map((case_) => (
+              <DataTableRow key={case_.id} hoverable>
+                <DataTableCell widthPx={120}>{case_.id}</DataTableCell>
+                <DataTableCell>{case_.patient}</DataTableCell>
+                <DataTableCell>{case_.condition}</DataTableCell>
+                <DataTableCell widthPx={120}>
+                  <span style={{
+                    padding: 'var(--space-1) var(--space-2)',
+                    borderRadius: 'var(--radius-xs)',
+                    fontSize: 'var(--font-size-sm)',
+                    fontWeight: 'var(--font-weight-medium)',
+                    background: case_.priority === 'Critical' ? 'var(--medical-error)' : 'var(--medical-warning)',
+                    color: 'var(--medical-10)'
+                  }}>
+                    {case_.priority}
+                  </span>
+                </DataTableCell>
+                <DataTableCell widthPx={140}>{case_.status}</DataTableCell>
               </DataTableRow>
             ))}
           </DataTableBody>

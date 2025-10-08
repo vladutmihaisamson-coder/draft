@@ -1,21 +1,68 @@
 // Design tokens shared by app and Storybook
 
-// Neutral shades (from 00 up)
-$shade-00: #000000;
-$shade-01: #242527;
-$shade-02: #696B6C;
-$shade-03: #848A8F;
-$shade-04: #9CA1A5;
-$shade-05: #AFB3B7;
-$shade-06: #C1C4C7;
-$shade-07: #DADBDC;
-$shade-08: #ECEDEE;
-$shade-09: #FAFBFB;
-$shade-10: #FFFFFF;
+// Medical color palette - Clean, calming, sterile
+$medical-00: #0A0B0C;        // Deep medical charcoal
+$medical-01: #1A2B3A;        // Medical navy
+$medical-02: #2D4A5B;        // Soft medical blue
+$medical-03: #4A6B7A;        // Muted medical teal
+$medical-04: #6B8A9A;        // Light medical blue
+$medical-05: #8FA8B5;        // Pale medical blue
+$medical-06: #B3C5D0;        // Very light medical blue
+$medical-07: #D6E2E8;        // Ultra light medical blue
+$medical-08: #F0F4F7;        // Medical white-blue
+$medical-09: #F8FAFC;        // Pure medical white
+$medical-10: #FFFFFF;       // Sterile white
 
-// Radii
-$radius-small: 4px;
-$radius-medium: 8px;
+// Medical accent colors
+$medical-primary: #2563EB;   // Clean medical blue
+$medical-success: #10B981;   // Healthy green
+$medical-warning: #F59E0B;   // Caution amber
+$medical-error: #EF4444;    // Alert red
+$medical-info: #06B6D4;      // Information cyan
+
+// Glass effect colors
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: rgba(255, 255, 255, 0.2);
+$glass-shadow: rgba(0, 0, 0, 0.1);
+
+// Header scrolled state
+$header-scrolled-bg: rgba(255, 255, 255, 0.85);
+
+// Radii (4px scale)
+$radius-xs: 2px;     // Extra small
+$radius-small: 4px;   // Small
+$radius-medium: 8px;  // Medium
+$radius-large: 12px;  // Large
+$radius-xl: 16px;     // Extra large
+
+// Medical shadows - Soft, clean, sterile
+$shadow-xs: 0 1px 2px 0 rgba(26, 43, 58, 0.08);
+$shadow-sm: 0 1px 3px 0 rgba(26, 43, 58, 0.12), 0 1px 2px 0 rgba(26, 43, 58, 0.08);
+$shadow-md: 0 4px 6px -1px rgba(26, 43, 58, 0.1), 0 2px 4px -1px rgba(26, 43, 58, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(26, 43, 58, 0.1), 0 4px 6px -2px rgba(26, 43, 58, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(26, 43, 58, 0.1), 0 10px 10px -5px rgba(26, 43, 58, 0.04);
+
+// Glass effect shadows
+$glass-shadow: 0 8px 32px 0 rgba(26, 43, 58, 0.12);
+$glass-shadow-lg: 0 16px 48px 0 rgba(26, 43, 58, 0.15);
+
+// Medical focus rings
+$focus-ring: 0 0 0 2px rgba(37, 99, 235, 0.4);
+$focus-ring-error: 0 0 0 2px rgba(239, 68, 68, 0.4);
+$focus-ring-success: 0 0 0 2px rgba(16, 185, 129, 0.4);
+$focus-ring-warning: 0 0 0 2px rgba(245, 158, 11, 0.4);
+
+// Transitions (timing functions)
+$transition-fast: 150ms ease;
+$transition-normal: 200ms ease;
+$transition-slow: 300ms ease;
+$transition-bounce: 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Opacity levels
+$opacity-disabled: 0.6;
+$opacity-hover: 0.8;
+$opacity-pressed: 0.9;
+$opacity-overlay: 0.4;
 
 // Layout tokens
 $max-width: 960px;
@@ -43,14 +90,14 @@ $space-20: 5rem;      // 80px
 $space-24: 6rem;      // 96px
 $space-32: 8rem;      // 128px
 
-// Typography tokens
-$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-$font-family-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+// Typography tokens - Clean, medical-grade fonts
+$font-family-primary: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+$font-family-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Monaco', 'Inconsolata', monospace;
 
 // Font sizes
 $font-size-xs: 0.75rem;    // 12px
 $font-size-sm: 0.875rem;   // 14px
-$font-size-base: 1rem;     // 16px
+$font-size-base: 0.9375rem;     // 15px
 $font-size-lg: 1.125rem;   // 18px
 $font-size-xl: 1.25rem;    // 20px
 $font-size-2xl: 1.5rem;    // 24px
@@ -80,22 +127,69 @@ $letter-spacing-wide: 0.025em;
 
 // Export CSS custom properties (framework-agnostic)
 :root {
-  // Neutrals (00 = black ... 10 = white)
-  --shade-00: #{$shade-00};
-  --shade-01: #{$shade-01};
-  --shade-02: #{$shade-02};
-  --shade-03: #{$shade-03};
-  --shade-04: #{$shade-04};
-  --shade-05: #{$shade-05};
-  --shade-06: #{$shade-06};
-  --shade-07: #{$shade-07};
-  --shade-08: #{$shade-08};
-  --shade-09: #{$shade-09};
-  --shade-10: #{$shade-10};
+  // Medical color palette
+  --medical-00: #{$medical-00};
+  --medical-01: #{$medical-01};
+  --medical-02: #{$medical-02};
+  --medical-03: #{$medical-03};
+  --medical-04: #{$medical-04};
+  --medical-05: #{$medical-05};
+  --medical-06: #{$medical-06};
+  --medical-07: #{$medical-07};
+  --medical-08: #{$medical-08};
+  --medical-09: #{$medical-09};
+  --medical-10: #{$medical-10};
+
+  // Header scrolled state
+  --header-scrolled-bg: #{$header-scrolled-bg};
+
+  // Medical accent colors
+  --medical-primary: #{$medical-primary};
+  --medical-success: #{$medical-success};
+  --medical-warning: #{$medical-warning};
+  --medical-error: #{$medical-error};
+  --medical-info: #{$medical-info};
+
+  // Glass effects
+  --glass-bg: #{$glass-bg};
+  --glass-border: #{$glass-border};
+  --glass-shadow: #{$glass-shadow};
 
   // Radii
+  --radius-xs: #{$radius-xs};
   --radius-small: #{$radius-small};
   --radius-medium: #{$radius-medium};
+  --radius-large: #{$radius-large};
+  --radius-xl: #{$radius-xl};
+
+  // Shadows
+  --shadow-xs: #{$shadow-xs};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+
+  // Glass effect shadows
+  --glass-shadow: #{$glass-shadow};
+  --glass-shadow-lg: #{$glass-shadow-lg};
+
+  // Focus rings
+  --focus-ring: #{$focus-ring};
+  --focus-ring-error: #{$focus-ring-error};
+  --focus-ring-success: #{$focus-ring-success};
+  --focus-ring-warning: #{$focus-ring-warning};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+  --transition-slow: #{$transition-slow};
+  --transition-bounce: #{$transition-bounce};
+
+  // Opacity
+  --opacity-disabled: #{$opacity-disabled};
+  --opacity-hover: #{$opacity-hover};
+  --opacity-pressed: #{$opacity-pressed};
+  --opacity-overlay: #{$opacity-overlay};
 
   // Layout
   --max-width: #{$max-width};

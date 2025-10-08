@@ -1,5 +1,17 @@
 export { default as DataTable } from './DataTable'
 export { DataTableHeader, DataTableBody, DataTableRow, DataTableHeaderCell, DataTableCell } from './DataTableSections'
 export { default as MoreButton } from './MoreButton'
+export { default as AppointmentCard } from './AppointmentCard'
+export { default as Logo } from './Logo'
+export { default as Dropdown } from './Dropdown'
+export { default as Select } from './Select'
+export { default as SelectSmall } from './SelectSmall'
+export { default as TitledField } from './TitledField'
+export { default as Modal } from './Modal'
+export { default as StatWidget } from './StatWidget'
+export { default as MetricWidget } from './MetricWidget'
+export { MedicalWidget } from './MedicalWidget'
+export { Icons, type IconName } from './icons'
+export { getIcon, getAllIcons } from './iconUtils'
 
 

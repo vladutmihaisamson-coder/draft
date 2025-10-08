@@ -1,4 +1,5 @@
 @import './styles/tokens.scss';
+@import './styles/components.css';
 
 /* Universal reset */
 * {
@@ -13,13 +14,14 @@
   font-weight: var(--font-weight-normal);
 
   color-scheme: light;
-  color: var(--shade-01);
-  background-color: var(--shade-10);
+  color: var(--medical-01);
+  background-color: var(--medical-10);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
 }
 
 a {
@@ -36,7 +38,7 @@ html, body, #root {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--shade-08);
+  background: linear-gradient(135deg, var(--medical-08) 0%, var(--medical-09) 100%);
   overflow-x: hidden;
 }
 
@@ -46,18 +48,18 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-xs);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--medical-10);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--medical-primary);
 }
 button:focus,
 button:focus-visible {
@@ -66,14 +68,14 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--medical-01);
+    background-color: var(--medical-10);
   }
   a:hover {
-    color: #747bff;
+    color: var(--medical-primary);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--medical-10);
   }
 }
 
@@ -95,8 +97,8 @@ button:focus-visible {
 .text-body-xs { font-size: var(--font-size-xs); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); }
 
 .text-lead { font-size: var(--font-size-lg); font-weight: var(--font-weight-normal); line-height: var(--line-height-relaxed); }
-.text-caption { font-size: var(--font-size-xs); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); color: var(--shade-03); }
-.text-small { font-size: var(--font-size-sm); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); color: var(--shade-02); }
+.text-caption { font-size: var(--font-size-xs); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); color: var(--medical-05); }
+.text-small { font-size: var(--font-size-sm); font-weight: var(--font-weight-normal); line-height: var(--line-height-normal); color: var(--medical-02); }
 
 .text-light { font-weight: var(--font-weight-light); }
 .text-normal { font-weight: var(--font-weight-normal); }
@@ -108,20 +110,20 @@ button:focus-visible {
 .text-code { 
   font-family: var(--font-family-mono); 
   font-size: var(--font-size-sm); 
-  background-color: var(--shade-08); 
+  background-color: var(--medical-08); 
   padding: 0.125rem 0.25rem; 
-  border-radius: var(--radius-small); 
-  color: var(--shade-01); 
+  border-radius: var(--radius-xs); 
+  color: var(--medical-01); 
 }
 
-.text-muted { color: var(--shade-03); }
-.text-muted-light { color: var(--shade-04); }
+.text-muted { color: var(--medical-05); }
+.text-muted-light { color: var(--medical-04); }
 
-.text-shade-01 { color: var(--shade-01); }
-.text-shade-02 { color: var(--shade-02); }
-.text-shade-03 { color: var(--shade-03); }
-.text-shade-04 { color: var(--shade-04); }
-.text-shade-05 { color: var(--shade-05); }
+.text-shade-01 { color: var(--medical-01); }
+.text-shade-02 { color: var(--medical-02); }
+.text-shade-03 { color: var(--medical-03); }
+.text-shade-04 { color: var(--medical-04); }
+.text-shade-05 { color: var(--medical-05); }
 
 .text-lh-tight { line-height: var(--line-height-tight); }
 .text-lh-normal { line-height: var(--line-height-normal); }

@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import Button from '../components/Button'
 
 interface ServicesProps {
   navigateTo?: (page: string) => void
@@ -320,12 +321,22 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
-              <button className="btn btn-primary" style={{ minWidth: '200px' }}>
+              <Button 
+                variant="primary" 
+                icon="calendar"
+                iconPosition="left"
+                style={{ minWidth: '200px' }}
+              >
                 Book Appointment
-              </button>
-              <button className="btn btn-secondary" style={{ minWidth: '200px' }}>
+              </Button>
+              <Button 
+                variant="secondary" 
+                icon="phone"
+                iconPosition="left"
+                style={{ minWidth: '200px' }}
+              >
                 Emergency Contact
-              </button>
+              </Button>
             </div>
           </div>
         </div>

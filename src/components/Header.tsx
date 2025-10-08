@@ -1,3 +1,7 @@
+import Button from './Button'
+import Logo from './Logo'
+import Dropdown from './Dropdown'
+
 interface HeaderProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
@@ -20,51 +24,105 @@ const Header = ({ navigateTo }: HeaderProps) => {
       justifyContent: 'space-between',
       boxSizing: 'border-box'
     }}>
-      {/* Logo placeholder */}
-      <div style={{
-        width: '120px',
-        height: '32px',
-        background: 'var(--shade-07)',
-        borderRadius: 'var(--radius-xs)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'var(--shade-03)',
-        fontSize: 'var(--font-size-sm)',
-        fontWeight: 'var(--font-weight-medium)',
-        cursor: 'pointer'
-      }}
-      onClick={() => handleNavigation('home')}
-      >
-        MedCare
-      </div>
-
-      {/* Right side wrapper - Navigation links and button */}
+      {/* Logo and Navigation */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 'var(--space-3)' // 12px gap between nav and button
+        gap: 'var(--space-6)'
       }}>
-        {/* Navigation links */}
+        {/* Logo */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-2)',
+          color: 'var(--medical-primary)',
+          cursor: 'pointer'
+        }}
+        onClick={() => handleNavigation('home')}
+        >
+          <Logo size={28} />
+          <span style={{
+            fontSize: 'var(--font-size-lg)',
+            fontWeight: 'var(--font-weight-bold)',
+            color: 'var(--medical-01)'
+          }}>
+            MedCare
+          </span>
+        </div>
+
+        {/* Location/Organization Dropdown */}
+        <Dropdown
+          label="City General Hospital"
+          items={[
+            {
+              label: 'City General Hospital',
+              onClick: () => console.log('Selected: City General Hospital')
+            },
+            {
+              label: 'Metropolitan Medical Center',
+              onClick: () => console.log('Selected: Metropolitan Medical Center')
+            },
+            {
+              label: 'Regional Health Clinic',
+              onClick: () => console.log('Selected: Regional Health Clinic')
+            },
+            {
+              label: 'University Medical Center',
+              onClick: () => console.log('Selected: University Medical Center')
+            },
+            {
+              label: 'Children\'s Hospital',
+              onClick: () => console.log('Selected: Children\'s Hospital')
+            },
+            {
+              label: 'Emergency Care Facility',
+              onClick: () => console.log('Selected: Emergency Care Facility')
+            },
+            {
+              label: 'Specialty Medical Group',
+              onClick: () => console.log('Selected: Specialty Medical Group')
+            },
+            {
+              label: 'Community Health Center',
+              onClick: () => console.log('Selected: Community Health Center')
+            }
+          ]}
+        />
+
+        {/* Separator */}
+        <div style={{
+          width: '1px',
+          height: '24px',
+          background: 'var(--medical-07)',
+          margin: '0 var(--space-2)'
+        }} />
+
+        {/* Navigation Links */}
         <nav style={{
           display: 'flex',
-          gap: 'var(--space-3)', // 12px gap between links
+          gap: 'var(--space-3)',
           alignItems: 'center'
         }}>
           <a 
             href="#" 
             style={{
-              color: 'var(--shade-01)',
+              color: 'var(--medical-02)',
               textDecoration: 'none',
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
+              borderRadius: 'var(--radius-small)',
+              transition: 'all var(--transition-normal)',
               cursor: 'pointer'
             }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--medical-primary)'
+              e.currentTarget.style.background = 'var(--medical-08)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--medical-02)'
+              e.currentTarget.style.background = 'transparent'
+            }}
             onClick={(e) => {
               e.preventDefault()
               handleNavigation('home')
@@ -75,80 +133,23 @@ const Header = ({ navigateTo }: HeaderProps) => {
           <a 
             href="#" 
             style={{
-              color: 'var(--shade-01)',
+              color: 'var(--medical-02)',
               textDecoration: 'none',
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
+              borderRadius: 'var(--radius-small)',
+              transition: 'all var(--transition-normal)',
               cursor: 'pointer'
             }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavigation('about')
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--medical-primary)'
+              e.currentTarget.style.background = 'var(--medical-08)'
             }}
-          >
-            About Us
-          </a>
-          <a 
-            href="#" 
-            style={{
-              color: 'var(--shade-01)',
-              textDecoration: 'none',
-              fontSize: 'var(--font-size-base)',
-              fontWeight: 'var(--font-weight-medium)',
-              padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
-              cursor: 'pointer'
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--medical-02)'
+              e.currentTarget.style.background = 'transparent'
             }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavigation('services')
-            }}
-          >
-            Medical Services
-          </a>
-          <a 
-            href="#" 
-            style={{
-              color: 'var(--shade-01)',
-              textDecoration: 'none',
-              fontSize: 'var(--font-size-base)',
-              fontWeight: 'var(--font-weight-medium)',
-              padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
-            onClick={(e) => {
-              e.preventDefault()
-              handleNavigation('settings')
-            }}
-          >
-            Patient Records
-          </a>
-          <a 
-            href="#" 
-            style={{
-              color: 'var(--shade-01)',
-              textDecoration: 'none',
-              fontSize: 'var(--font-size-base)',
-              fontWeight: 'var(--font-weight-medium)',
-              padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
-              cursor: 'pointer'
-            }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
             onClick={(e) => {
               e.preventDefault()
               handleNavigation('admin')
@@ -159,17 +160,23 @@ const Header = ({ navigateTo }: HeaderProps) => {
           <a 
             href="#" 
             style={{
-              color: 'var(--shade-01)',
+              color: 'var(--medical-02)',
               textDecoration: 'none',
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-xs)',
-              transition: 'background-color 0.2s ease',
+              borderRadius: 'var(--radius-small)',
+              transition: 'all var(--transition-normal)',
               cursor: 'pointer'
             }}
-            onMouseEnter={(e) => (e.target as HTMLElement).style.backgroundColor = 'var(--shade-08)'}
-            onMouseLeave={(e) => (e.target as HTMLElement).style.backgroundColor = 'transparent'}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = 'var(--medical-primary)'
+              e.currentTarget.style.background = 'var(--medical-08)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = 'var(--medical-02)'
+              e.currentTarget.style.background = 'transparent'
+            }}
             onClick={(e) => {
               e.preventDefault()
               handleNavigation('tabs')
@@ -177,17 +184,52 @@ const Header = ({ navigateTo }: HeaderProps) => {
           >
             Appointments
           </a>
+          
+          {/* More Dropdown */}
+          <Dropdown
+            label="More"
+            items={[
+              {
+                label: 'About Us',
+                onClick: () => handleNavigation('about')
+              },
+              {
+                label: 'Medical Services',
+                onClick: () => handleNavigation('services')
+              },
+              {
+                label: 'Patient Records',
+                onClick: () => handleNavigation('settings')
+              }
+            ]}
+          />
         </nav>
+      </div>
+
+      {/* Right side wrapper - Auth buttons */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--space-3)' // 12px gap between nav and button
+      }}>
 
         {/* Auth */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-          <button
-            className="btn btn-secondary"
+          <Button
+            variant="secondary"
+            icon="bell"
+            iconPosition="left"
             onClick={() => handleNavigation('playground')}
           >
             Emergency
-          </button>
-          <button className="btn btn-primary">Staff Login</button>
+          </Button>
+          <Button 
+            variant="primary"
+            icon="user"
+            iconPosition="left"
+          >
+            Staff Login
+          </Button>
         </div>
       </div>
     </header>

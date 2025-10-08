@@ -76,7 +76,12 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
                 color: 'var(--medical-01)',
                 margin: 0
               }}>Medical Staff</h3>
-              <Button variant="primary" onClick={() => alert('Add medical staff flow not implemented')}>
+              <Button 
+                variant="primary" 
+                icon="plus"
+                iconPosition="left"
+                onClick={() => alert('Add medical staff flow not implemented')}
+              >
                 Add Staff
               </Button>
             </div>
@@ -167,7 +172,12 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
             marginBottom: 'var(--space-4)'
           }}>
             <h3 className="text-h4">Active users</h3>
-            <Button variant="primary" onClick={() => alert('Invite flow not implemented')}>
+            <Button 
+              variant="primary" 
+              icon="mail"
+              iconPosition="left"
+              onClick={() => alert('Invite flow not implemented')}
+            >
               Invite user
             </Button>
           </div>

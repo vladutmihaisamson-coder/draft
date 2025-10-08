@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode, ThHTMLAttributes, TdHTMLAttributes } from 'react'
 import { useContext, useMemo } from 'react'
-import { DataTableResizeContext } from './DataTable'
+import { DataTableResizeContext } from './DataTableContext'
 
 interface SectionProps extends HTMLAttributes<HTMLTableSectionElement> {
   children: ReactNode

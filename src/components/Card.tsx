@@ -11,7 +11,10 @@ const Card = ({ title, subtitle }: CardProps) => {
       borderRadius: 'var(--radius-medium)',
       display: 'flex',
       flexDirection: 'column',
-      gap: 'var(--space-2)' // 8px gap between elements
+      gap: 'var(--space-2)', // 8px gap between elements
+      boxShadow: 'var(--shadow-sm)',
+      border: '1px solid var(--shade-07)',
+      transition: 'all var(--transition-normal)'
     }}>
       {/* Title using body token */}
       <p style={{

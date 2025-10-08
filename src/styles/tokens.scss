@@ -13,9 +13,36 @@ $shade-08: #ECEDEE;
 $shade-09: #FAFBFB;
 $shade-10: #FFFFFF;
 
-// Radii
-$radius-small: 4px;
-$radius-medium: 8px;
+// Radii (4px scale)
+$radius-xs: 2px;     // Extra small
+$radius-small: 4px;   // Small
+$radius-medium: 8px;  // Medium
+$radius-large: 12px;  // Large
+$radius-xl: 16px;     // Extra large
+
+// Shadows (subtle depth system)
+$shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+// Focus rings
+$focus-ring: 0 0 0 2px rgba(59, 130, 246, 0.5);
+$focus-ring-error: 0 0 0 2px rgba(239, 68, 68, 0.5);
+$focus-ring-success: 0 0 0 2px rgba(34, 197, 94, 0.5);
+
+// Transitions (timing functions)
+$transition-fast: 150ms ease;
+$transition-normal: 200ms ease;
+$transition-slow: 300ms ease;
+$transition-bounce: 200ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Opacity levels
+$opacity-disabled: 0.6;
+$opacity-hover: 0.8;
+$opacity-pressed: 0.9;
+$opacity-overlay: 0.4;
 
 // Layout tokens
 $max-width: 960px;
@@ -94,8 +121,35 @@ $letter-spacing-wide: 0.025em;
   --shade-10: #{$shade-10};
 
   // Radii
+  --radius-xs: #{$radius-xs};
   --radius-small: #{$radius-small};
   --radius-medium: #{$radius-medium};
+  --radius-large: #{$radius-large};
+  --radius-xl: #{$radius-xl};
+
+  // Shadows
+  --shadow-xs: #{$shadow-xs};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-xl: #{$shadow-xl};
+
+  // Focus rings
+  --focus-ring: #{$focus-ring};
+  --focus-ring-error: #{$focus-ring-error};
+  --focus-ring-success: #{$focus-ring-success};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+  --transition-slow: #{$transition-slow};
+  --transition-bounce: #{$transition-bounce};
+
+  // Opacity
+  --opacity-disabled: #{$opacity-disabled};
+  --opacity-hover: #{$opacity-hover};
+  --opacity-pressed: #{$opacity-pressed};
+  --opacity-overlay: #{$opacity-overlay};
 
   // Layout
   --max-width: #{$max-width};

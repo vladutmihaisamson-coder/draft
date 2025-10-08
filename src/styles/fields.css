@@ -26,26 +26,30 @@
   color: var(--shade-01);
   background-color: var(--shade-10);
   border: 1px solid var(--shade-07);
-  border-radius: var(--radius-medium);
+  border-radius: var(--radius-xs);
   outline: none;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   box-sizing: border-box;
   cursor: text;
+  box-shadow: var(--shadow-xs);
 }
 
 .field-input:focus {
   border-color: var(--primary-01);
-  box-shadow: 0 0 0 2px var(--primary-02);
+  box-shadow: var(--focus-ring), var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .field-input:hover:not(:disabled) {
   border-color: var(--shade-06);
+  box-shadow: var(--shadow-sm);
 }
 
 .field-input:disabled {
-  opacity: 0.6;
+  opacity: var(--opacity-disabled);
   cursor: not-allowed;
   background-color: var(--shade-08);
+  box-shadow: none;
 }
 
 .field-input--error {
@@ -70,12 +74,14 @@
   height: var(--height-xs);
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-sm);
+  border-radius: var(--radius-xs);
 }
 
 .field-input--sm {
   height: var(--height-sm);
   padding: var(--space-2) var(--space-3);
   font-size: var(--font-size-sm);
+  border-radius: var(--radius-xs);
 }
 
 .field-input--md {
@@ -105,22 +111,25 @@
   color: var(--shade-01);
   background-color: var(--shade-10);
   border: 1px solid var(--shade-07);
-  border-radius: var(--radius-medium);
+  border-radius: var(--radius-xs);
   outline: none;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   box-sizing: border-box;
   cursor: text;
   resize: vertical;
   min-height: var(--height-md);
+  box-shadow: var(--shadow-xs);
 }
 
 .field-textarea:focus {
   border-color: var(--primary-01);
-  box-shadow: 0 0 0 2px var(--primary-02);
+  box-shadow: var(--focus-ring), var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .field-textarea:hover:not(:disabled) {
   border-color: var(--shade-06);
+  box-shadow: var(--shadow-sm);
 }
 
 .field-textarea:disabled {
@@ -147,9 +156,9 @@
   color: var(--shade-01);
   background-color: var(--shade-10);
   border: 1px solid var(--shade-07);
-  border-radius: var(--radius-medium);
+  border-radius: var(--radius-xs);
   outline: none;
-  transition: all 0.2s ease;
+  transition: all var(--transition-normal);
   box-sizing: border-box;
   cursor: pointer;
   appearance: none;
@@ -158,15 +167,18 @@
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
+  box-shadow: var(--shadow-xs);
 }
 
 .field-select:focus {
   border-color: var(--primary-01);
-  box-shadow: 0 0 0 2px var(--primary-02);
+  box-shadow: var(--focus-ring), var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .field-select:hover:not(:disabled) {
   border-color: var(--shade-06);
+  box-shadow: var(--shadow-sm);
 }
 
 .field-select:disabled {

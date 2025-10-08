@@ -46,7 +46,7 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-xs);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -110,7 +110,7 @@ button:focus-visible {
   font-size: var(--font-size-sm); 
   background-color: var(--shade-08); 
   padding: 0.125rem 0.25rem; 
-  border-radius: var(--radius-small); 
+  border-radius: var(--radius-xs); 
   color: var(--shade-01); 
 }
 

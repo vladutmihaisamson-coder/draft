@@ -25,7 +25,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
         width: '120px',
         height: '32px',
         background: 'var(--shade-07)',
-        borderRadius: 'var(--radius-small)',
+        borderRadius: 'var(--radius-xs)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -59,7 +59,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}
@@ -80,7 +80,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}
@@ -101,7 +101,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}
@@ -122,7 +122,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}
@@ -143,7 +143,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}
@@ -164,7 +164,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               fontSize: 'var(--font-size-base)',
               fontWeight: 'var(--font-weight-medium)',
               padding: 'var(--space-2) var(--space-3)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               transition: 'background-color 0.2s ease',
               cursor: 'pointer'
             }}

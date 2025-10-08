@@ -46,7 +46,7 @@ const Pagination = ({
           style={{
             padding: 'var(--space-1) var(--space-2)',
             border: '1px solid var(--shade-07)',
-            borderRadius: 'var(--radius-small)',
+            borderRadius: 'var(--radius-xs)',
             background: 'var(--shade-10)',
             color: 'var(--shade-01)',
             fontSize: 'var(--font-size-sm)',
@@ -85,7 +85,7 @@ const Pagination = ({
             style={{
               padding: 'var(--space-1) var(--space-2)',
               border: '1px solid var(--shade-07)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               background: currentPage === 1 ? 'var(--shade-08)' : 'var(--shade-10)',
               color: currentPage === 1 ? 'var(--shade-04)' : 'var(--shade-01)',
               fontSize: 'var(--font-size-sm)',
@@ -103,7 +103,7 @@ const Pagination = ({
             style={{
               padding: 'var(--space-1) var(--space-2)',
               border: '1px solid var(--shade-07)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               background: currentPage === 1 ? 'var(--shade-08)' : 'var(--shade-10)',
               color: currentPage === 1 ? 'var(--shade-04)' : 'var(--shade-01)',
               fontSize: 'var(--font-size-sm)',
@@ -125,7 +125,7 @@ const Pagination = ({
                 style={{
                   padding: 'var(--space-1) var(--space-2)',
                   border: '1px solid var(--shade-07)',
-                  borderRadius: 'var(--radius-small)',
+                  borderRadius: 'var(--radius-xs)',
                   background: currentPage === pageNum ? 'var(--primary-01)' : 'var(--shade-10)',
                   color: currentPage === pageNum ? 'var(--shade-10)' : 'var(--shade-01)',
                   fontSize: 'var(--font-size-sm)',
@@ -145,7 +145,7 @@ const Pagination = ({
             style={{
               padding: 'var(--space-1) var(--space-2)',
               border: '1px solid var(--shade-07)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               background: currentPage === totalPages ? 'var(--shade-08)' : 'var(--shade-10)',
               color: currentPage === totalPages ? 'var(--shade-04)' : 'var(--shade-01)',
               fontSize: 'var(--font-size-sm)',
@@ -163,7 +163,7 @@ const Pagination = ({
             style={{
               padding: 'var(--space-1) var(--space-2)',
               border: '1px solid var(--shade-07)',
-              borderRadius: 'var(--radius-small)',
+              borderRadius: 'var(--radius-xs)',
               background: currentPage === totalPages ? 'var(--shade-08)' : 'var(--shade-10)',
               color: currentPage === totalPages ? 'var(--shade-04)' : 'var(--shade-01)',
               fontSize: 'var(--font-size-sm)',

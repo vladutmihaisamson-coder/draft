@@ -53,7 +53,7 @@ const Tabs = ({ items, initialActiveKey, onChange, className = '' }: TabsProps) 
                 background: isActive ? 'var(--shade-09)' : 'transparent',
                 color: item.disabled ? 'var(--shade-04)' : 'var(--shade-01)',
                 padding: 'var(--space-2) var(--space-4)',
-                borderRadius: 'var(--radius-small)',
+                borderRadius: 'var(--radius-xs)',
                 fontFamily: 'var(--font-family-primary)',
                 fontSize: 'var(--font-size-sm)',
                 fontWeight: 'var(--font-weight-medium)',

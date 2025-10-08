@@ -14,7 +14,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
         width: 32,
         height: 32,
         padding: 0,
-        borderRadius: 'var(--radius-small)',
+        borderRadius: 'var(--radius-xs)',
         border: `1px solid var(--shade-07)`,
         background: 'var(--shade-10)',
         color: 'var(--shade-02)',

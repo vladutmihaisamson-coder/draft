@@ -25,7 +25,7 @@ const Settings = ({ navigateTo, hasClerk = false, isScrolled = false }: Settings
     language: 'en'
   })
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string | number | boolean) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

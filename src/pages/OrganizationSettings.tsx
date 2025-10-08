@@ -40,7 +40,7 @@ const OrganizationSettings = ({ navigateTo, hasClerk = false, isScrolled = false
     securityLevel: 'high'
   })
 
-  const handleInputChange = (field: string, value: string | boolean) => {
+  const handleInputChange = (field: string, value: string | number | boolean) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

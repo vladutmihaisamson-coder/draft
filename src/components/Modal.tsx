@@ -137,7 +137,7 @@ const Modal = ({
       </div>
 
       {/* Add CSS animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes modalSlideIn {
           from {
             opacity: 0;

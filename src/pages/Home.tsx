@@ -13,47 +13,47 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(15)
   const [currentPage, setCurrentPage] = useState(1)
 
-  // Table data - Products & Stock
-  type ProductRow = {
-    sku: string; product: string; category: string; price: string; stock: number; reorder: number;
+  // Table data - Medical Equipment & Inventory
+  type MedicalEquipmentRow = {
+    sku: string; equipment: string; category: string; cost: string; stock: number; reorder: number;
   }
   
-  const tableColumns: { key: keyof ProductRow; label: string; width?: string }[] = [
+  const tableColumns: { key: keyof MedicalEquipmentRow; label: string; width?: string }[] = [
     { key: 'sku', label: 'SKU', width: '100px' },
-    { key: 'product', label: 'Product' },
+    { key: 'equipment', label: 'Equipment' },
     { key: 'category', label: 'Category' },
-    { key: 'price', label: 'Price' },
+    { key: 'cost', label: 'Cost' },
     { key: 'stock', label: 'In Stock' },
     { key: 'reorder', label: 'Reorder Level' }
   ]
 
-  // Generate product stock data
-  const allTableData: ProductRow[] = [
-    { sku: 'SKU-0001', product: 'Wireless Mouse', category: 'Accessories', price: '$24.99', stock: 120, reorder: 50 },
-    { sku: 'SKU-0002', product: 'Mechanical Keyboard', category: 'Accessories', price: '$89.00', stock: 45, reorder: 30 },
-    { sku: 'SKU-0003', product: '27" 4K Monitor', category: 'Displays', price: '$329.99', stock: 18, reorder: 10 },
-    { sku: 'SKU-0004', product: 'USB-C Hub 7-in-1', category: 'Accessories', price: '$39.99', stock: 200, reorder: 80 },
-    { sku: 'SKU-0005', product: 'Noise-Canceling Headphones', category: 'Audio', price: '$159.00', stock: 32, reorder: 20 },
-    { sku: 'SKU-0006', product: 'Laptop Stand', category: 'Accessories', price: '$29.50', stock: 150, reorder: 60 },
-    { sku: 'SKU-0007', product: 'Webcam 1080p', category: 'Cameras', price: '$49.00', stock: 75, reorder: 40 },
-    { sku: 'SKU-0008', product: 'Portable SSD 1TB', category: 'Storage', price: '$119.99', stock: 26, reorder: 15 },
-    { sku: 'SKU-0009', product: 'Gaming Chair', category: 'Furniture', price: '$199.00', stock: 12, reorder: 8 },
-    { sku: 'SKU-0010', product: 'Ergonomic Desk', category: 'Furniture', price: '$349.00', stock: 9, reorder: 5 },
-    { sku: 'SKU-0011', product: 'Laser Printer', category: 'Printers', price: '$229.99', stock: 14, reorder: 10 },
-    { sku: 'SKU-0012', product: 'Ink Cartridge Pack', category: 'Printers', price: '$59.99', stock: 280, reorder: 100 },
-    { sku: 'SKU-0013', product: 'Smartphone Stand', category: 'Accessories', price: '$14.99', stock: 500, reorder: 200 },
-    { sku: 'SKU-0014', product: 'Bluetooth Speaker', category: 'Audio', price: '$69.00', stock: 66, reorder: 30 },
-    { sku: 'SKU-0015', product: 'USB-C Cable 2m', category: 'Cables', price: '$9.99', stock: 620, reorder: 250 },
-    { sku: 'SKU-0016', product: 'HDMI Cable 1.5m', category: 'Cables', price: '$7.49', stock: 740, reorder: 300 },
-    { sku: 'SKU-0017', product: 'Laptop Sleeve 15"', category: 'Bags', price: '$25.00', stock: 210, reorder: 80 },
-    { sku: 'SKU-0018', product: 'Wireless Charger', category: 'Power', price: '$29.99', stock: 95, reorder: 40 },
-    { sku: 'SKU-0019', product: 'Surge Protector', category: 'Power', price: '$19.49', stock: 134, reorder: 60 },
-    { sku: 'SKU-0020', product: 'Desk Lamp LED', category: 'Lighting', price: '$34.99', stock: 58, reorder: 25 },
-    { sku: 'SKU-0021', product: 'Action Camera 4K', category: 'Cameras', price: '$249.00', stock: 22, reorder: 10 },
-    { sku: 'SKU-0022', product: 'Tripod Stand', category: 'Cameras', price: '$39.00', stock: 88, reorder: 35 },
-    { sku: 'SKU-0023', product: 'Graphic Tablet', category: 'Input', price: '$179.00', stock: 17, reorder: 10 },
-    { sku: 'SKU-0024', product: 'Office Chair Mat', category: 'Furniture', price: '$49.99', stock: 41, reorder: 20 },
-    { sku: 'SKU-0025', product: 'Portable Projector', category: 'Displays', price: '$299.00', stock: 13, reorder: 8 }
+  // Generate medical equipment inventory data
+  const allTableData: MedicalEquipmentRow[] = [
+    { sku: 'MED-0001', equipment: 'Digital Stethoscope', category: 'Diagnostic', cost: '$299.99', stock: 45, reorder: 20 },
+    { sku: 'MED-0002', equipment: 'Blood Pressure Monitor', category: 'Diagnostic', cost: '$89.00', stock: 78, reorder: 30 },
+    { sku: 'MED-0003', equipment: 'Pulse Oximeter', category: 'Monitoring', cost: '$129.99', stock: 32, reorder: 15 },
+    { sku: 'MED-0004', equipment: 'Thermometer Digital', category: 'Diagnostic', cost: '$39.99', stock: 120, reorder: 50 },
+    { sku: 'MED-0005', equipment: 'ECG Machine', category: 'Cardiology', cost: '$2,499.00', stock: 8, reorder: 3 },
+    { sku: 'MED-0006', equipment: 'Defibrillator AED', category: 'Emergency', cost: '$1,299.00', stock: 12, reorder: 5 },
+    { sku: 'MED-0007', equipment: 'Ultrasound Scanner', category: 'Imaging', cost: '$8,999.00', stock: 4, reorder: 2 },
+    { sku: 'MED-0008', equipment: 'X-Ray Machine', category: 'Imaging', cost: '$45,000.00', stock: 2, reorder: 1 },
+    { sku: 'MED-0009', equipment: 'Surgical Lights', category: 'Surgery', cost: '$3,299.00', stock: 6, reorder: 3 },
+    { sku: 'MED-0010', equipment: 'Anesthesia Machine', category: 'Surgery', cost: '$12,999.00', stock: 3, reorder: 1 },
+    { sku: 'MED-0011', equipment: 'Ventilator', category: 'Respiratory', cost: '$15,999.00', stock: 5, reorder: 2 },
+    { sku: 'MED-0012', equipment: 'Infusion Pump', category: 'Therapy', cost: '$899.00', stock: 25, reorder: 10 },
+    { sku: 'MED-0013', equipment: 'Wheelchair', category: 'Mobility', cost: '$299.00', stock: 45, reorder: 20 },
+    { sku: 'MED-0014', equipment: 'Hospital Bed', category: 'Furniture', cost: '$1,899.00', stock: 18, reorder: 8 },
+    { sku: 'MED-0015', equipment: 'Surgical Gloves', category: 'Supplies', cost: '$12.99', stock: 500, reorder: 200 },
+    { sku: 'MED-0016', equipment: 'Syringes 10ml', category: 'Supplies', cost: '$8.99', stock: 800, reorder: 300 },
+    { sku: 'MED-0017', equipment: 'Bandages Pack', category: 'Supplies', cost: '$15.00', stock: 350, reorder: 150 },
+    { sku: 'MED-0018', equipment: 'Oxygen Tank', category: 'Respiratory', cost: '$199.00', stock: 28, reorder: 12 },
+    { sku: 'MED-0019', equipment: 'Nebulizer', category: 'Respiratory', cost: '$89.99', stock: 42, reorder: 20 },
+    { sku: 'MED-0020', equipment: 'Surgical Scissors', category: 'Surgery', cost: '$45.00', stock: 65, reorder: 25 },
+    { sku: 'MED-0021', equipment: 'MRI Scanner', category: 'Imaging', cost: '$1,200,000.00', stock: 1, reorder: 0 },
+    { sku: 'MED-0022', equipment: 'CT Scanner', category: 'Imaging', cost: '$800,000.00', stock: 1, reorder: 0 },
+    { sku: 'MED-0023', equipment: 'Dialysis Machine', category: 'Therapy', cost: '$25,000.00', stock: 2, reorder: 1 },
+    { sku: 'MED-0024', equipment: 'Patient Monitor', category: 'Monitoring', cost: '$2,999.00', stock: 8, reorder: 4 },
+    { sku: 'MED-0025', equipment: 'Autoclave Sterilizer', category: 'Sterilization', cost: '$4,999.00', stock: 3, reorder: 1 }
   ]
 
   // Calculate pagination
@@ -98,16 +98,16 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
           gap: 'var(--space-3)', // 12px gap between cards
           alignItems: 'start'
         }}>
-          <Card title="Active" subtitle="1,234" />
-          <Card title="Inactive" subtitle="567" />
-          <Card title="Pending" subtitle="89" />
-          <Card title="Completed" subtitle="2,456" />
+          <Card title="Active Patients" subtitle="1,234" />
+          <Card title="Discharged" subtitle="567" />
+          <Card title="Pending Tests" subtitle="89" />
+          <Card title="Completed Procedures" subtitle="2,456" />
         </div>
       </section>
 
       {/* Table section - Full width */}
       <section style={{
-        padding: '0 0 var(--space-8)', // No left/right padding, only bottom padding
+        padding: '0 var(--space-6) var(--space-8)', // 24px LR padding to avoid touching edges
         width: '100%'
       }}>
         <DataTable resizable>

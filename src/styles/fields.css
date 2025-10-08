@@ -23,32 +23,33 @@
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
-  color: var(--shade-01);
-  background-color: var(--shade-10);
-  border: 1px solid var(--shade-07);
-  border-radius: var(--radius-xs);
+  color: var(--medical-01);
+  background: var(--medical-10);
+  border: 1px solid var(--medical-07);
+  border-radius: var(--radius-large);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
   cursor: text;
-  box-shadow: var(--shadow-xs);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-base);
+  min-height: var(--height-lg);
 }
 
 .field-input:focus {
-  border-color: var(--primary-01);
-  box-shadow: var(--focus-ring), var(--shadow-sm);
-  transform: translateY(-1px);
+  border-color: var(--medical-primary);
+  box-shadow: var(--focus-ring);
+  transform: none;
 }
 
 .field-input:hover:not(:disabled) {
-  border-color: var(--shade-06);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--medical-06);
 }
 
 .field-input:disabled {
   opacity: var(--opacity-disabled);
   cursor: not-allowed;
-  background-color: var(--shade-08);
+  background: var(--medical-08);
   box-shadow: none;
 }
 
@@ -108,28 +109,28 @@
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
-  color: var(--shade-01);
-  background-color: var(--shade-10);
-  border: 1px solid var(--shade-07);
-  border-radius: var(--radius-xs);
+  color: var(--medical-01);
+  background: var(--medical-10);
+  border: 1px solid var(--medical-07);
+  border-radius: var(--radius-large);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
   cursor: text;
   resize: vertical;
-  min-height: var(--height-md);
-  box-shadow: var(--shadow-xs);
+  min-height: var(--height-lg);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-base);
 }
 
 .field-textarea:focus {
-  border-color: var(--primary-01);
-  box-shadow: var(--focus-ring), var(--shadow-sm);
-  transform: translateY(-1px);
+  border-color: var(--medical-primary);
+  box-shadow: var(--focus-ring);
+  transform: none;
 }
 
 .field-textarea:hover:not(:disabled) {
-  border-color: var(--shade-06);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--medical-06);
 }
 
 .field-textarea:disabled {
@@ -153,10 +154,10 @@
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
-  color: var(--shade-01);
-  background-color: var(--shade-10);
-  border: 1px solid var(--shade-07);
-  border-radius: var(--radius-xs);
+  color: var(--medical-01);
+  background: var(--medical-10);
+  border: 1px solid var(--medical-07);
+  border-radius: var(--radius-large);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
@@ -166,19 +167,20 @@
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
+  padding: var(--space-4) var(--space-5);
   padding-right: 2.5rem;
-  box-shadow: var(--shadow-xs);
+  font-size: var(--font-size-base);
+  min-height: var(--height-lg);
 }
 
 .field-select:focus {
-  border-color: var(--primary-01);
-  box-shadow: var(--focus-ring), var(--shadow-sm);
-  transform: translateY(-1px);
+  border-color: var(--medical-primary);
+  box-shadow: var(--focus-ring);
+  transform: none;
 }
 
 .field-select:hover:not(:disabled) {
-  border-color: var(--shade-06);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--medical-06);
 }
 
 .field-select:disabled {

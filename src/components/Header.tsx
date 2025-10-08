@@ -36,7 +36,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
       }}
       onClick={() => handleNavigation('home')}
       >
-        LOGO
+        MedCare
       </div>
 
       {/* Right side wrapper - Navigation links and button */}
@@ -70,7 +70,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('home')
             }}
           >
-            Home
+            Dashboard
           </a>
           <a 
             href="#" 
@@ -91,7 +91,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('about')
             }}
           >
-            About
+            About Us
           </a>
           <a 
             href="#" 
@@ -112,7 +112,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('services')
             }}
           >
-            Services
+            Medical Services
           </a>
           <a 
             href="#" 
@@ -133,7 +133,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('settings')
             }}
           >
-            Settings
+            Patient Records
           </a>
           <a 
             href="#" 
@@ -154,7 +154,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('admin')
             }}
           >
-            Admin
+            Staff Management
           </a>
           <a 
             href="#" 
@@ -175,7 +175,7 @@ const Header = ({ navigateTo }: HeaderProps) => {
               handleNavigation('tabs')
             }}
           >
-            Tabs
+            Appointments
           </a>
         </nav>
 
@@ -185,9 +185,9 @@ const Header = ({ navigateTo }: HeaderProps) => {
             className="btn btn-secondary"
             onClick={() => handleNavigation('playground')}
           >
-            Playground
+            Emergency
           </button>
-          <button className="btn btn-primary">Sign In</button>
+          <button className="btn btn-primary">Staff Login</button>
         </div>
       </div>
     </header>

@@ -6,15 +6,15 @@ interface CardProps {
 const Card = ({ title, subtitle }: CardProps) => {
   return (
     <div style={{
-      background: 'var(--shade-10)',
+      background: 'var(--medical-10)',
       padding: 'var(--space-6)', // 24px
       borderRadius: 'var(--radius-medium)',
       display: 'flex',
       flexDirection: 'column',
       gap: 'var(--space-2)', // 8px gap between elements
-      boxShadow: 'var(--shadow-sm)',
-      border: '1px solid var(--shade-07)',
-      transition: 'all var(--transition-normal)'
+      border: '1px solid var(--medical-07)',
+      transition: 'all var(--transition-normal)',
+      backdropFilter: 'blur(10px)'
     }}>
       {/* Title using body token */}
       <p style={{
@@ -22,7 +22,7 @@ const Card = ({ title, subtitle }: CardProps) => {
         fontSize: 'var(--font-size-base)',
         fontWeight: 'var(--font-weight-normal)',
         lineHeight: 'var(--line-height-normal)',
-        color: 'var(--shade-01)',
+        color: 'var(--medical-01)',
         margin: 0,
         textAlign: 'left'
       }}>
@@ -35,7 +35,7 @@ const Card = ({ title, subtitle }: CardProps) => {
         fontSize: 'var(--font-size-lg)',
         fontWeight: 'var(--font-weight-semibold)',
         lineHeight: 'var(--line-height-tight)',
-        color: 'var(--shade-01)',
+        color: 'var(--medical-01)',
         margin: 0,
         textAlign: 'left'
       }}>

@@ -28,14 +28,14 @@ export const DataTableRow = ({ children, selected, hoverable = true, style, ...r
   return (
     <tr
       style={{
-        borderBottom: `1px solid var(--shade-07)`,
+        borderBottom: `1px solid var(--medical-07)`,
         transition: 'background-color 0.2s ease',
-        background: selected ? 'var(--shade-09)' : undefined,
+        background: selected ? 'var(--medical-08)' : undefined,
         ...style
       }}
       onMouseEnter={(e) => {
         if (!hoverable || selected) return
-        e.currentTarget.style.backgroundColor = 'var(--shade-09)'
+        e.currentTarget.style.backgroundColor = 'var(--medical-08)'
       }}
       onMouseLeave={(e) => {
         if (!hoverable || selected) return

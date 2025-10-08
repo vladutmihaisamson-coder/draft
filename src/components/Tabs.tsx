@@ -4,6 +4,7 @@ export interface TabItem {
   key: string
   label: string
   disabled?: boolean
+  content?: React.ReactNode
 }
 
 interface TabsProps {
@@ -33,8 +34,8 @@ const Tabs = ({ items, initialActiveKey, onChange, className = '' }: TabsProps) 
       <div role="tablist" aria-label="Tabs" style={{
         display: 'flex',
         gap: 'var(--space-2)',
-        background: 'var(--shade-10)',
-        border: `1px solid var(--shade-07)`,
+        background: 'var(--medical-10)',
+        border: `1px solid var(--medical-07)`,
         borderRadius: 'var(--radius-medium)',
         padding: 'var(--space-1)',
         overflowX: 'auto'
@@ -49,21 +50,25 @@ const Tabs = ({ items, initialActiveKey, onChange, className = '' }: TabsProps) 
               aria-disabled={item.disabled || false}
               onClick={() => handleSelect(item.key, item.disabled)}
               style={{
-                border: `1px solid ${isActive ? 'var(--shade-06)' : 'transparent'}`,
-                background: isActive ? 'var(--shade-09)' : 'transparent',
-                color: item.disabled ? 'var(--shade-04)' : 'var(--shade-01)',
-                padding: 'var(--space-2) var(--space-4)',
-                borderRadius: 'var(--radius-xs)',
+                border: `1px solid ${isActive ? 'var(--medical-primary)' : 'transparent'}`,
+                background: isActive ? 'var(--medical-08)' : 'transparent',
+                color: item.disabled ? 'var(--medical-05)' : 'var(--medical-01)',
+                padding: 'var(--space-3) var(--space-4)',
+                borderRadius: 'var(--radius-small)',
                 fontFamily: 'var(--font-family-primary)',
-                fontSize: 'var(--font-size-sm)',
-                fontWeight: 'var(--font-weight-medium)',
+                fontSize: 'var(--font-size-base)',
+                fontWeight: isActive ? 'var(--font-weight-semibold)' : 'var(--font-weight-medium)',
                 cursor: item.disabled ? 'not-allowed' : 'pointer',
-                transition: 'background-color 0.2s ease, border-color 0.2s ease',
-                whiteSpace: 'nowrap'
+                transition: 'all var(--transition-normal)',
+                whiteSpace: 'nowrap',
+                minHeight: 'var(--height-md)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
               onMouseEnter={(e) => {
                 if (item.disabled || isActive) return
-                e.currentTarget.style.background = 'var(--shade-09)'
+                e.currentTarget.style.background = 'var(--medical-08)'
               }}
               onMouseLeave={(e) => {
                 if (item.disabled || isActive) return
@@ -79,8 +84,21 @@ const Tabs = ({ items, initialActiveKey, onChange, className = '' }: TabsProps) 
       {/* Underline indicator */}
       <div style={{
         height: 1,
-        background: 'var(--shade-07)'
+        background: 'var(--medical-07)'
       }} />
+
+      {/* Tab Content */}
+      {activeKey && (
+        <div style={{
+          padding: 'var(--space-6)',
+          background: 'var(--medical-10)',
+          border: '1px solid var(--medical-07)',
+          borderRadius: 'var(--radius-medium)',
+          marginTop: 'var(--space-4)'
+        }}>
+          {items.find(item => item.key === activeKey)?.content}
+        </div>
+      )}
     </div>
   )
 }

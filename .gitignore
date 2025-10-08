@@ -6,8 +6,6 @@ node_modules/
 /build/
 .vite/
 
-# Environment
-.env*
 
 # System files
 .DS_Store

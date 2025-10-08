@@ -14,7 +14,7 @@
   border: 1px solid var(--glass-border);
   color: var(--medical-01);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
   line-height: var(--line-height-tight);
   cursor: pointer;
@@ -32,7 +32,7 @@
   background: linear-gradient(135deg, var(--medical-primary) 0%, #3B82F6 100%);
   border-color: var(--medical-primary);
   color: var(--medical-10);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-primary:hover {
@@ -53,12 +53,12 @@
   background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
   border-color: var(--medical-06);
   color: var(--medical-01);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, var(--medical-08) 0%, var(--medical-07) 100%);
-  border-color: var(--medical-05);
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
   color: var(--medical-01);
   transform: translateY(-1px);
 }
@@ -75,7 +75,7 @@
   background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
   border-color: transparent;
   color: var(--medical-01);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-subtle:hover {

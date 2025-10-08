@@ -45,11 +45,6 @@ const Tabs = ({ items, initialActiveKey, onChange, className = '' }: TabsProps) 
         })}
       </div>
 
-      {/* Underline indicator */}
-      <div style={{
-        height: 1,
-        background: 'var(--medical-07)'
-      }} />
 
       {/* Tab Content */}
       {activeKey && (

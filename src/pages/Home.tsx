@@ -7,9 +7,11 @@ import Pagination from '../components/Pagination'
 interface HomeProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
+  toggleScroll?: () => void
 }
 
-const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
+const Home = ({ navigateTo, hasClerk = false, isScrolled = false, toggleScroll }: HomeProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(15)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -75,10 +77,11 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
 
   return (
     <div className="page-container">
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
+
       {/* Cards section */}
-      <section className="page-section">
+      <section className="cards-section">
         <div className="page-grid">
           <MedicalWidget 
             title="Active Patients"
@@ -124,7 +127,7 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
       </section>
 
       {/* Table section - Full width */}
-      <section className="page-section" style={{ paddingBottom: 'var(--space-8)' }}>
+      <section className="table-section" style={{ paddingBottom: 'var(--space-8)' }}>
         <DataTable resizable>
           <DataTableHeader>
             <DataTableRow hoverable={false}>

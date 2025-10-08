@@ -4,9 +4,10 @@ import Button from '../components/Button'
 interface ServicesProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
+const Services = ({ navigateTo, hasClerk = false, isScrolled = false }: ServicesProps) => {
   return (
     <div style={{ 
       minHeight: '100vh',
@@ -15,7 +16,7 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
       {/* Content section */}
       <section style={{
@@ -52,7 +53,7 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--space-6)',
+            gap: 'var(--space-3)',
             marginBottom: 'var(--space-8)'
           }}>
             <div style={{
@@ -317,7 +318,7 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
             </p>
             <div style={{
               display: 'flex',
-              gap: 'var(--space-4)',
+              gap: 'var(--space-3)',
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>

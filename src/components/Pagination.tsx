@@ -1,3 +1,7 @@
+import React from 'react'
+import SelectSmall from './SelectSmall'
+import PaginationButton from './PaginationButton'
+
 interface PaginationProps {
   currentPage: number
   totalPages: number
@@ -26,7 +30,6 @@ const Pagination = ({
       alignItems: 'center',
       padding: 'var(--space-4) var(--space-6)',
       background: 'var(--medical-10)',
-      border: '1px solid var(--medical-07)',
       borderTop: 'none',
       borderRadius: '0 0 var(--radius-medium) var(--radius-medium)',
       fontFamily: 'var(--font-family-primary)',
@@ -40,26 +43,17 @@ const Pagination = ({
         gap: 'var(--space-2)'
       }}>
         <span>Show</span>
-        <select
+        <SelectSmall
           value={itemsPerPage}
-          onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-          style={{
-            padding: 'var(--space-1) var(--space-2)',
-            border: '1px solid var(--medical-07)',
-            borderRadius: 'var(--radius-xs)',
-            background: 'var(--medical-10)',
-            color: 'var(--medical-01)',
-            fontSize: 'var(--font-size-sm)',
-            fontFamily: 'var(--font-family-primary)',
-            cursor: 'pointer'
-          }}
-        >
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={15}>15</option>
-          <option value={25}>25</option>
-          <option value={50}>50</option>
-        </select>
+          onChange={(value) => onItemsPerPageChange(Number(value))}
+          options={[
+            { value: 5, label: '5' },
+            { value: 10, label: '10' },
+            { value: 15, label: '15' },
+            { value: 25, label: '25' },
+            { value: 50, label: '50' }
+          ]}
+        />
         <span>entries</span>
       </div>
 
@@ -67,7 +61,7 @@ const Pagination = ({
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        gap: 'var(--space-4)'
+        gap: 'var(--space-3)'
       }}>
         {/* Page info */}
         <span>
@@ -79,101 +73,48 @@ const Pagination = ({
           display: 'flex',
           gap: 'var(--space-1)'
         }}>
-          <button
+          <PaginationButton
             onClick={() => onPageChange(1)}
             disabled={currentPage === 1}
-            style={{
-              padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--medical-07)',
-              borderRadius: 'var(--radius-xs)',
-              background: currentPage === 1 ? 'var(--medical-08)' : 'var(--medical-10)',
-              color: currentPage === 1 ? 'var(--medical-04)' : 'var(--medical-01)',
-              fontSize: 'var(--font-size-sm)',
-              fontFamily: 'var(--font-family-primary)',
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease'
-            }}
           >
             First
-          </button>
+          </PaginationButton>
           
-          <button
+          <PaginationButton
             onClick={() => onPageChange(currentPage - 1)}
             disabled={currentPage === 1}
-            style={{
-              padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--medical-07)',
-              borderRadius: 'var(--radius-xs)',
-              background: currentPage === 1 ? 'var(--medical-08)' : 'var(--medical-10)',
-              color: currentPage === 1 ? 'var(--medical-04)' : 'var(--medical-01)',
-              fontSize: 'var(--font-size-sm)',
-              fontFamily: 'var(--font-family-primary)',
-              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease'
-            }}
           >
             Previous
-          </button>
+          </PaginationButton>
 
           {/* Page numbers */}
           {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
             const pageNum = Math.max(1, Math.min(totalPages - 4, currentPage - 2)) + i
+            const isActive = currentPage === pageNum
             return (
-              <button
+              <PaginationButton
                 key={pageNum}
                 onClick={() => onPageChange(pageNum)}
-                style={{
-                  padding: 'var(--space-1) var(--space-2)',
-                  border: '1px solid var(--medical-07)',
-                  borderRadius: 'var(--radius-xs)',
-                  background: currentPage === pageNum ? 'var(--primary-01)' : 'var(--medical-10)',
-                  color: currentPage === pageNum ? 'var(--medical-10)' : 'var(--medical-01)',
-                  fontSize: 'var(--font-size-sm)',
-                  fontFamily: 'var(--font-family-primary)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
+                isActive={isActive}
               >
                 {pageNum}
-              </button>
+              </PaginationButton>
             )
           })}
 
-          <button
+          <PaginationButton
             onClick={() => onPageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
-            style={{
-              padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--medical-07)',
-              borderRadius: 'var(--radius-xs)',
-              background: currentPage === totalPages ? 'var(--medical-08)' : 'var(--medical-10)',
-              color: currentPage === totalPages ? 'var(--medical-04)' : 'var(--medical-01)',
-              fontSize: 'var(--font-size-sm)',
-              fontFamily: 'var(--font-family-primary)',
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease'
-            }}
           >
             Next
-          </button>
+          </PaginationButton>
           
-          <button
+          <PaginationButton
             onClick={() => onPageChange(totalPages)}
             disabled={currentPage === totalPages}
-            style={{
-              padding: 'var(--space-1) var(--space-2)',
-              border: '1px solid var(--medical-07)',
-              borderRadius: 'var(--radius-xs)',
-              background: currentPage === totalPages ? 'var(--medical-08)' : 'var(--medical-10)',
-              color: currentPage === totalPages ? 'var(--medical-04)' : 'var(--medical-01)',
-              fontSize: 'var(--font-size-sm)',
-              fontFamily: 'var(--font-family-primary)',
-              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
-              transition: 'all 0.2s ease'
-            }}
           >
             Last
-          </button>
+          </PaginationButton>
         </div>
       </div>
     </div>

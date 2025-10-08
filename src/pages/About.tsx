@@ -3,9 +3,10 @@ import Header from '../components/Header'
 interface AboutProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const About = ({ navigateTo, hasClerk = false }: AboutProps) => {
+const About = ({ navigateTo, hasClerk = false, isScrolled = false }: AboutProps) => {
   return (
     <div style={{ 
       minHeight: '100vh',
@@ -14,7 +15,7 @@ const About = ({ navigateTo, hasClerk = false }: AboutProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
       {/* Content section */}
       <section style={{
@@ -40,7 +41,7 @@ const About = ({ navigateTo, hasClerk = false }: AboutProps) => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--space-8)',
+            gap: 'var(--space-3)',
             marginBottom: 'var(--space-8)'
           }}>
             <div>
@@ -106,7 +107,7 @@ const About = ({ navigateTo, hasClerk = false }: AboutProps) => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: 'var(--space-6)'
+              gap: 'var(--space-3)'
             }}>
               <div>
                 <h3 style={{

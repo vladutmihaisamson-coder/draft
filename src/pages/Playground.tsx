@@ -4,9 +4,10 @@ import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeade
 interface PlaygroundProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
+const Playground = ({ navigateTo, hasClerk = false, isScrolled = false }: PlaygroundProps) => {
   const emergencyCases = [
     { id: 'EM-001', patient: 'John Smith', condition: 'Chest Pain', priority: 'Critical', status: 'In Progress' },
     { id: 'EM-002', patient: 'Sarah Johnson', condition: 'Severe Allergic Reaction', priority: 'High', status: 'Stabilized' },
@@ -23,7 +24,7 @@ const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
 
       <section style={{
         padding: 'var(--space-8)',
@@ -36,7 +37,7 @@ const Playground = ({ navigateTo, hasClerk = false }: PlaygroundProps) => {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--space-6)'
+          gap: 'var(--space-3)'
         }}>
           <h1 style={{
             fontFamily: 'var(--font-family-primary)',

@@ -20,6 +20,16 @@
   width: 100%;
 }
 
+.cards-section {
+  padding: var(--space-3) var(--space-6);
+  width: 100%;
+}
+
+.table-section {
+  padding: 0 var(--space-6) var(--space-3) var(--space-6);
+  width: 100%;
+}
+
 .page-grid {
   width: 100%;
   display: grid;
@@ -28,18 +38,66 @@
   align-items: start;
 }
 
+/* Breakpoint: switch cards section to horizontal scroll when viewport is narrow */
+@media (max-width: 1024px) {
+  .cards-section {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cards-section .page-grid {
+    /* Horizontal list of cards */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 1fr);
+    grid-template-columns: none;
+  }
+
+  .cards-section .card {
+    /* Cap vertical size on small screens so inner content can scroll */
+    max-height: 60vh;
+  }
+
+  .cards-section .card-content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* Header Styles */
 .header {
-  background: var(--medical-10);
-  border-bottom: 1px solid var(--medical-07);
   padding: var(--space-4) var(--space-6);
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(10px);
   width: 100%;
   box-sizing: border-box;
   overflow: visible;
+  transition: all var(--transition-normal);
+}
+
+/* Sentinel used to detect when the page has scrolled past the top
+   Keep it 1px tall and placed just above the sticky header */
+.header-sentinel {
+  position: sticky;
+  top: 0;
+  height: 1px;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Header at top - flat white, no transparency, no shadow */
+.header.header--at-top {
+  background: var(--medical-10);
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+/* Header when scrolled - transparent with blur and shadow */
+.header.header--scrolled {
+  background: var(--header-scrolled-bg);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-md);
 }
 
 .header-content {
@@ -54,7 +112,7 @@
 .header-left {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex: 1;
   min-width: 0;
   overflow: visible;
@@ -88,7 +146,7 @@
 .header-nav {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--space-3);
   flex-shrink: 0;
   min-width: 0;
 }
@@ -97,7 +155,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
-  color: var(--medical-02);
+  color: var(--medical-01);
   text-decoration: none;
   transition: color var(--transition-normal);
   padding: var(--space-1) var(--space-2);
@@ -107,8 +165,7 @@
 }
 
 .header-nav-item:hover {
-  color: var(--medical-01);
-  background: var(--medical-08);
+  color: var(--medical-primary);
 }
 
 .header-actions {
@@ -125,7 +182,7 @@
   }
   
   .header-nav {
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
   
   .header-actions {
@@ -192,7 +249,6 @@
 /* Widget Styles */
 .widget {
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-medium);
   padding: var(--space-6);
   min-height: 228px;
@@ -309,11 +365,6 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--medical-08);
-}
-
-.medical-widget-metric:last-child {
-  border-bottom: none;
 }
 
 .medical-widget-metric-label {
@@ -371,7 +422,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--medical-02);
+  color: var(--medical-01);
 }
 
 .stat-widget-insights {
@@ -397,7 +448,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--medical-02);
+  color: var(--medical-01);
 }
 
 .metric-widget-header {
@@ -425,11 +476,6 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--space-2) 0;
-  border-bottom: 1px solid var(--medical-08);
-}
-
-.metric-widget-metric:last-child {
-  border-bottom: none;
 }
 
 .metric-widget-metric-label {
@@ -470,7 +516,6 @@
 /* Appointment Card Styles */
 .appointment-card {
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-medium);
   padding: var(--space-5);
   transition: all var(--transition-normal);
@@ -479,8 +524,6 @@
 }
 
 .appointment-card:hover {
-  border-color: var(--medical-primary);
-  box-shadow: var(--glass-shadow);
   transform: translateY(-2px);
 }
 
@@ -495,7 +538,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--medical-02);
+  color: var(--medical-01);
 }
 
 .appointment-card-priority {
@@ -568,7 +611,6 @@
   justify-content: space-between;
   align-items: center;
   padding-top: var(--space-3);
-  border-top: 1px solid var(--medical-08);
 }
 
 .appointment-card-time {
@@ -587,10 +629,8 @@
 /* Card Component */
 .card {
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-medium);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-sm);
+  padding: var(--space-3) var(--space-6);
 }
 
 .card-title {
@@ -604,7 +644,7 @@
 .card-content {
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
-  color: var(--medical-02);
+  color: var(--medical-01);
   line-height: var(--line-height-normal);
   margin: 0 0 var(--space-4) 0;
 }
@@ -644,38 +684,40 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
-  padding: var(--space-3) var(--space-4);
-  background: var(--medical-10) !important;
-  border: 1px solid var(--medical-07);
-  border-radius: var(--radius-medium);
+  height: var(--height-lg);
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border: 1px solid var(--medical-06);
+  border-radius: var(--radius-small);
   cursor: pointer;
   transition: all var(--transition-normal);
   width: 100%;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   color: var(--medical-01);
 }
 
 .dropdown-trigger:hover {
-  border-color: var(--medical-06);
-  background: var(--medical-10) !important;
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
+  transform: translateY(-1px);
 }
 
 .dropdown-trigger:focus {
   outline: none;
-  border-color: var(--medical-primary);
   box-shadow: var(--focus-ring);
-  background: var(--medical-10) !important;
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border-color: var(--medical-primary);
 }
 
 .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  background: var(--medical-10);
-  border: 1px solid var(--medical-07);
-  border-radius: var(--radius-medium);
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border: 1px solid var(--medical-06);
+  border-radius: var(--radius-small);
   box-shadow: var(--shadow-lg);
   z-index: 1000;
   margin-top: var(--space-1);
@@ -743,21 +785,17 @@
   padding: var(--space-3) var(--space-4);
   cursor: pointer;
   transition: background-color var(--transition-normal);
-  border-bottom: 1px solid var(--medical-08);
   width: 100%;
   border: none;
   background: transparent;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   color: var(--medical-01);
   text-align: left;
   border-radius: 0;
 }
 
-.dropdown-item:last-child {
-  border-bottom: none;
-}
 
 .dropdown-item:hover {
   background: var(--medical-08) !important;
@@ -799,7 +837,7 @@
 .tabs {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .tabs-list {
@@ -833,15 +871,12 @@
 }
 
 .tabs-content {
-  padding: var(--space-6);
-  background: var(--medical-10);
-  border-radius: var(--radius-medium);
+  background: transparent;
 }
 
 /* Data Table Styles */
 .data-table-container {
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-medium);
   overflow: hidden;
 }
@@ -850,8 +885,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-4) var(--space-6);
-  border-bottom: 1px solid var(--medical-07);
+  padding: 0 var(--space-6) var(--space-4) var(--space-6);
   background: var(--medical-08);
 }
 
@@ -876,14 +910,13 @@
 .data-table td {
   padding: var(--space-3) var(--space-4);
   text-align: left;
-  border-bottom: 1px solid var(--medical-08);
 }
 
 .data-table th {
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  color: var(--medical-02);
+  color: var(--medical-01);
   background: var(--medical-08);
 }
 
@@ -895,7 +928,6 @@
 
 .data-table-cell {
   padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--medical-08);
 }
 
 .data-table-cell-separator {
@@ -911,7 +943,6 @@
   gap: var(--space-2);
   padding: var(--space-4) var(--space-6);
   background: var(--medical-08);
-  border-top: 1px solid var(--medical-07);
 }
 
 .pagination-info {
@@ -934,7 +965,6 @@
   width: 32px;
   height: 32px;
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-small);
   cursor: pointer;
   transition: all var(--transition-normal);
@@ -942,7 +972,6 @@
 
 .pagination-button:hover:not(:disabled) {
   background: var(--medical-08);
-  border-color: var(--medical-06);
 }
 
 .pagination-button:disabled {
@@ -952,13 +981,11 @@
 
 .pagination-button--active {
   background: var(--medical-primary);
-  border-color: var(--medical-primary);
   color: var(--medical-10);
 }
 
 .pagination-button--active:hover {
   background: var(--medical-01);
-  border-color: var(--medical-01);
 }
 
 .pagination-ellipsis {
@@ -980,7 +1007,6 @@
   width: 32px;
   height: 32px;
   background: var(--medical-10);
-  border: 1px solid var(--medical-07);
   border-radius: var(--radius-small);
   cursor: pointer;
   transition: all var(--transition-normal);
@@ -988,7 +1014,6 @@
 
 .more-button:hover {
   background: var(--medical-08);
-  border-color: var(--medical-06);
 }
 
 .more-button-icon {
@@ -1051,7 +1076,7 @@
 }
 
 .gap-4 {
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .mb-2 {

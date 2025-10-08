@@ -65,11 +65,8 @@ const DataTable = ({ children, fixedLayout = true, resizable = false, onColumnRe
         width: '100%',
         overflow: 'auto',
         borderRadius: 'var(--radius-medium)',
-        border: `1px solid var(--medical-07)`,
         background: 'var(--medical-10)',
-        boxShadow: 'var(--glass-shadow)',
-        transition: 'all var(--transition-normal)',
-        backdropFilter: 'blur(10px)'
+        transition: 'all var(--transition-normal)'
       }}>
         <table
           style={{

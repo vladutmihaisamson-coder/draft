@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 import Card from '../components/Card'
-import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeaderCell, DataTableCell } from '../components'
+import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeaderCell, DataTableCell, MedicalWidget } from '../components'
 import Pagination from '../components/Pagination'
 
 interface HomeProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
+  toggleScroll?: () => void
 }
 
-const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
+const Home = ({ navigateTo, hasClerk = false, isScrolled = false, toggleScroll }: HomeProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(15)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -74,42 +76,58 @@ const Home = ({ navigateTo, hasClerk = false }: HomeProps) => {
 
 
   return (
-    <div style={{ 
-      minHeight: '100vh',
-      width: '100vw',
-      background: 'var(--shade-08)',
-      margin: 0,
-      padding: 0
-    }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+    <div className="page-container">
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
+
       {/* Cards section */}
-      <section style={{
-        padding: 'var(--space-8)', // 32px padding
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%'
-      }}>
-        <div style={{
-          maxWidth: 'var(--max-width)', // 960px max width
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 'var(--space-3)', // 12px gap between cards
-          alignItems: 'start'
-        }}>
-          <Card title="Active Patients" subtitle="1,234" />
-          <Card title="Discharged" subtitle="567" />
-          <Card title="Pending Tests" subtitle="89" />
-          <Card title="Completed Procedures" subtitle="2,456" />
+      <section className="cards-section">
+        <div className="page-grid">
+          <MedicalWidget 
+            title="Active Patients"
+            value="1,234"
+            subtitle="Current inpatients"
+            trend="up"
+            trendValue="+12%"
+            description="Patient occupancy rate across all departments"
+            location="Main Hospital"
+            status="normal"
+          />
+          <MedicalWidget 
+            title="Emergency Cases"
+            value="89"
+            subtitle="Critical patients"
+            trend="up"
+            trendValue="+8%"
+            description="Patients requiring immediate attention"
+            location="Emergency Department"
+            status="critical"
+          />
+          <MedicalWidget 
+            title="Pending Tests"
+            value="89"
+            subtitle="Lab results pending"
+            trend="down"
+            trendValue="-3%"
+            description="Laboratory tests awaiting completion"
+            location="Diagnostic Lab"
+            status="warning"
+          />
+          <MedicalWidget 
+            title="Completed Procedures"
+            value="2,456"
+            subtitle="This month"
+            trend="up"
+            trendValue="+15%"
+            description="Medical procedures successfully completed"
+            location="Surgery Department"
+            status="success"
+          />
         </div>
       </section>
 
       {/* Table section - Full width */}
-      <section style={{
-        padding: '0 var(--space-6) var(--space-8)', // 24px LR padding to avoid touching edges
-        width: '100%'
-      }}>
+      <section className="table-section" style={{ paddingBottom: 'var(--space-8)' }}>
         <DataTable resizable>
           <DataTableHeader>
             <DataTableRow hoverable={false}>

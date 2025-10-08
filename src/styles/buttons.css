@@ -14,7 +14,7 @@
   border: 1px solid var(--glass-border);
   color: var(--medical-01);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
   line-height: var(--line-height-tight);
   cursor: pointer;
@@ -32,7 +32,7 @@
   background: linear-gradient(135deg, var(--medical-primary) 0%, #3B82F6 100%);
   border-color: var(--medical-primary);
   color: var(--medical-10);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-primary:hover {
@@ -53,21 +53,21 @@
   background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
   border-color: var(--medical-06);
   color: var(--medical-01);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-secondary:hover {
-  background: linear-gradient(135deg, var(--medical-08) 0%, var(--medical-07) 100%);
-  border-color: var(--medical-05);
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
   color: var(--medical-01);
   transform: translateY(-1px);
 }
 
 .btn-secondary:disabled,
 .btn-secondary[aria-disabled="true"] {
-  background-color: var(--shade-07);
-  border-color: var(--shade-07);
-  color: var(--shade-04);
+  background-color: var(--medical-07);
+  border-color: var(--medical-07);
+  color: var(--medical-04);
 }
 
 /* Subtle button */
@@ -75,7 +75,7 @@
   background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
   border-color: transparent;
   color: var(--medical-01);
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-medium);
 }
 
 .btn-subtle:hover {
@@ -87,19 +87,19 @@
 
 .btn-subtle:disabled,
 .btn-subtle[aria-disabled="true"] {
-  color: var(--shade-04);
+  color: var(--medical-04);
 }
 
 /* Link style */
 .btn-link {
   background: transparent;
   border-color: transparent;
-  color: var(--shade-01);
+  color: var(--medical-01);
   text-decoration: underline;
 }
 
 .btn-link:hover {
-  color: var(--shade-00);
+  color: var(--medical-00);
 }
 
 /* Outline variants removed: secondary is the outline style */

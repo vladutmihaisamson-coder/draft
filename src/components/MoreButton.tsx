@@ -45,7 +45,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
         <span style={{
           position: 'absolute',
@@ -55,7 +55,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
         <span style={{
           position: 'absolute',
@@ -65,7 +65,7 @@ const MoreButton = ({ style, ...rest }: MoreButtonProps) => {
           width: 4,
           height: 4,
           borderRadius: '50%',
-          background: 'var(--shade-03)'
+          background: 'var(--medical-03)'
         }} />
       </span>
     </button>

@@ -2,13 +2,17 @@ import { useState } from 'react'
 import Header from '../components/Header'
 import TextField from '../components/TextField'
 import Checkbox from '../components/Checkbox'
+import Select from '../components/Select'
+import TitledField from '../components/TitledField'
+import Button from '../components/Button'
 
 interface SettingsProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
+const Settings = ({ navigateTo, hasClerk = false, isScrolled = false }: SettingsProps) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -32,11 +36,11 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
     <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)',
+      background: 'var(--medical-08)',
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
       {/* Content section */}
       <section style={{
@@ -70,12 +74,12 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
             Manage your medical staff profile, department information, and system preferences. Update your medical license and notification settings.
           </p>
 
-          {/* Settings Form (no background container padding) */}
+          {/* Main content container with white background */}
           <div style={{
-            background: 'transparent',
+            background: 'var(--medical-10)',
             borderRadius: 'var(--radius-medium)',
-            padding: 0,
-            border: 'none'
+            padding: 'var(--space-8)',
+            marginBottom: 'var(--space-8)'
           }}>
             <h2 style={{
               fontFamily: 'var(--font-family-primary)',
@@ -91,7 +95,7 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: 'var(--space-6)',
+              gap: 'var(--space-3)',
               marginBottom: 'var(--space-8)'
             }}>
               <TextField
@@ -160,35 +164,35 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-              gap: 'var(--space-6)',
+              gap: 'var(--space-3)',
               marginBottom: 'var(--space-8)'
             }}>
-              <div className="field">
-                <label className="field-label">Theme</label>
-                <select
-                  className="field-select field-input--md"
+              <TitledField label="Theme">
+                <Select
                   value={formData.theme}
-                  onChange={(e) => handleInputChange('theme', e.target.value)}
-                >
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                  <option value="auto">Auto</option>
-                </select>
-              </div>
+                  onChange={(value) => handleInputChange('theme', value)}
+                  options={[
+                    { value: 'light', label: 'Light' },
+                    { value: 'dark', label: 'Dark' },
+                    { value: 'auto', label: 'Auto' }
+                  ]}
+                  size="md"
+                />
+              </TitledField>
 
-              <div className="field">
-                <label className="field-label">Language</label>
-                <select
-                  className="field-select field-input--md"
+              <TitledField label="Language">
+                <Select
                   value={formData.language}
-                  onChange={(e) => handleInputChange('language', e.target.value)}
-                >
-                  <option value="en">English</option>
-                  <option value="es">Spanish</option>
-                  <option value="fr">French</option>
-                  <option value="de">German</option>
-                </select>
-              </div>
+                  onChange={(value) => handleInputChange('language', value)}
+                  options={[
+                    { value: 'en', label: 'English' },
+                    { value: 'es', label: 'Spanish' },
+                    { value: 'fr', label: 'French' },
+                    { value: 'de', label: 'German' }
+                  ]}
+                  size="md"
+                />
+              </TitledField>
             </div>
 
             {/* Notifications */}
@@ -211,22 +215,22 @@ const Settings = ({ navigateTo, hasClerk = false }: SettingsProps) => {
               justifyContent: 'flex-end',
               marginTop: 'var(--space-8)',
               paddingTop: 'var(--space-6)',
-              borderTop: '1px solid var(--shade-07)'
+              borderTop: '1px solid var(--medical-07)'
             }}>
-              <button
-                className="btn btn-secondary"
+              <Button
+                variant="secondary"
                 onClick={() => console.log('Reset form')}
                 style={{ minWidth: '100px' }}
               >
                 Reset
-              </button>
-              <button
-                className="btn btn-primary"
+              </Button>
+              <Button
+                variant="primary"
                 onClick={() => console.log('Save settings', formData)}
                 style={{ minWidth: '100px' }}
               >
                 Save Changes
-              </button>
+              </Button>
             </div>
           </div>
         </div>

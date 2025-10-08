@@ -25,6 +25,9 @@ $glass-bg: rgba(255, 255, 255, 0.1);
 $glass-border: rgba(255, 255, 255, 0.2);
 $glass-shadow: rgba(0, 0, 0, 0.1);
 
+// Header scrolled state
+$header-scrolled-bg: rgba(255, 255, 255, 0.85);
+
 // Radii (4px scale)
 $radius-xs: 2px;     // Extra small
 $radius-small: 4px;   // Small
@@ -136,6 +139,9 @@ $letter-spacing-wide: 0.025em;
   --medical-08: #{$medical-08};
   --medical-09: #{$medical-09};
   --medical-10: #{$medical-10};
+
+  // Header scrolled state
+  --header-scrolled-bg: #{$header-scrolled-bg};
 
   // Medical accent colors
   --medical-primary: #{$medical-primary};

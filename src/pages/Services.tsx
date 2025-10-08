@@ -1,20 +1,22 @@
 import Header from '../components/Header'
+import Button from '../components/Button'
 
 interface ServicesProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
+const Services = ({ navigateTo, hasClerk = false, isScrolled = false }: ServicesProps) => {
   return (
     <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)',
+      background: 'var(--medical-08)',
       margin: 0,
       padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
       
       {/* Content section */}
       <section style={{
@@ -51,7 +53,7 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: 'var(--space-6)',
+            gap: 'var(--space-3)',
             marginBottom: 'var(--space-8)'
           }}>
             <div style={{
@@ -316,16 +318,26 @@ const Services = ({ navigateTo, hasClerk = false }: ServicesProps) => {
             </p>
             <div style={{
               display: 'flex',
-              gap: 'var(--space-4)',
+              gap: 'var(--space-3)',
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
-              <button className="btn btn-primary" style={{ minWidth: '200px' }}>
+              <Button 
+                variant="primary" 
+                icon="calendar"
+                iconPosition="left"
+                style={{ minWidth: '200px' }}
+              >
                 Book Appointment
-              </button>
-              <button className="btn btn-secondary" style={{ minWidth: '200px' }}>
+              </Button>
+              <Button 
+                variant="secondary" 
+                icon="phone"
+                iconPosition="left"
+                style={{ minWidth: '200px' }}
+              >
                 Emergency Contact
-              </button>
+              </Button>
             </div>
           </div>
         </div>

@@ -13,7 +13,7 @@
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--shade-01);
+  color: var(--medical-01);
   margin-bottom: var(--space-2);
   line-height: var(--line-height-tight);
 }
@@ -24,9 +24,9 @@
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--medical-01);
-  background: var(--medical-10);
-  border: 1px solid var(--medical-07);
-  border-radius: var(--radius-large);
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border: 1px solid var(--medical-06);
+  border-radius: var(--radius-small);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
@@ -43,7 +43,9 @@
 }
 
 .field-input:hover:not(:disabled) {
-  border-color: var(--medical-06);
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
+  transform: translateY(-1px);
 }
 
 .field-input:disabled {
@@ -110,9 +112,9 @@
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--medical-01);
-  background: var(--medical-10);
-  border: 1px solid var(--medical-07);
-  border-radius: var(--radius-large);
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border: 1px solid var(--medical-06);
+  border-radius: var(--radius-small);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
@@ -130,13 +132,15 @@
 }
 
 .field-textarea:hover:not(:disabled) {
-  border-color: var(--medical-06);
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
+  transform: translateY(-1px);
 }
 
 .field-textarea:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  background-color: var(--shade-08);
+  background-color: var(--medical-08);
 }
 
 .field-textarea--error {
@@ -155,9 +159,9 @@
   font-weight: var(--font-weight-normal);
   line-height: var(--line-height-normal);
   color: var(--medical-01);
-  background: var(--medical-10);
-  border: 1px solid var(--medical-07);
-  border-radius: var(--radius-large);
+  background: linear-gradient(135deg, var(--medical-10) 0%, var(--medical-09) 100%);
+  border: 1px solid var(--medical-06);
+  border-radius: var(--radius-small);
   outline: none;
   transition: all var(--transition-normal);
   box-sizing: border-box;
@@ -180,13 +184,15 @@
 }
 
 .field-select:hover:not(:disabled) {
-  border-color: var(--medical-06);
+  background: linear-gradient(135deg, var(--medical-09) 0%, var(--medical-08) 100%);
+  border-color: var(--medical-primary);
+  transform: translateY(-1px);
 }
 
 .field-select:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-  background-color: var(--shade-08);
+  background-color: var(--medical-08);
 }
 
 .field-select--error {
@@ -198,6 +204,37 @@
   box-shadow: 0 0 0 2px var(--error-02);
 }
 
+/* Select size variants */
+.field-select--xs {
+  height: var(--height-xs);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+}
+
+.field-select--sm {
+  height: var(--height-sm);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.field-select--md {
+  height: var(--height-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+.field-select--lg {
+  height: var(--height-lg);
+  padding: var(--space-4) var(--space-5);
+  font-size: var(--font-size-lg);
+}
+
+.field-select--xl {
+  height: var(--height-xl);
+  padding: var(--space-5) var(--space-6);
+  font-size: var(--font-size-xl);
+}
+
 /* Checkbox and radio styles */
 .field-checkbox,
 .field-radio {
@@ -207,14 +244,14 @@
   cursor: pointer;
   font-family: var(--font-family-primary);
   font-size: var(--font-size-base);
-  color: var(--shade-01);
+  color: var(--medical-01);
   line-height: var(--line-height-normal);
   transition: all 0.2s ease;
 }
 
 .field-checkbox:hover:not(.field-checkbox--disabled),
 .field-radio:hover:not(.field-radio--disabled) {
-  color: var(--shade-00);
+  color: var(--medical-00);
 }
 
 .field-checkbox input,
@@ -223,7 +260,7 @@
   height: 1rem;
   margin: 0;
   cursor: pointer;
-  accent-color: var(--shade-01);
+  accent-color: var(--medical-01);
   transition: all 0.2s ease;
 }
 
@@ -262,7 +299,7 @@
 .field-checkbox--disabled .field-checkbox-label,
 .field-radio--disabled .field-radio-label {
   cursor: not-allowed;
-  color: var(--shade-04);
+  color: var(--medical-04);
 }
 
 /* Checkbox size variants */
@@ -295,7 +332,7 @@
 .field-group {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .field-group--horizontal {
@@ -313,7 +350,7 @@
   margin-top: var(--space-1);
   font-family: var(--font-family-primary);
   font-size: var(--font-size-sm);
-  color: var(--shade-02);
+  color: var(--medical-02);
   line-height: var(--line-height-tight);
 }
 

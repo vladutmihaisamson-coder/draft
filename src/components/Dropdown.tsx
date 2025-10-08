@@ -1,88 +1,90 @@
-import { useId } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { Icons } from './icons'
 
-export type DropdownItem = {
-  key: string
+interface DropdownItem {
   label: string
-  disabled?: boolean
+  icon?: string
+  onClick: () => void
 }
 
-export type DropdownProps = {
+interface DropdownProps {
   label: string
   items: DropdownItem[]
-  onSelect?: (key: string) => void
-  disabled?: boolean
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
-    | 'link'
-  size?: 'sm' | 'lg'
-  align?: 'start' | 'end'
-  fullWidth?: boolean
+  className?: string
+  style?: React.CSSProperties
 }
 
-export default function Dropdown({
-  label,
-  items,
-  onSelect,
-  disabled = false,
-  variant = 'primary',
-  size,
-  align = 'start',
-  fullWidth = false,
-}: DropdownProps) {
-  const id = useId()
+const Dropdown = ({ label, items, className, style }: DropdownProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const buttonClass = [
-    'btn',
-    `btn-${variant}`,
-    'dropdown-toggle',
-    size ? `btn-${size}` : undefined,
-    fullWidth ? 'w-100' : undefined,
-  ]
-    .filter(Boolean)
-    .join(' ')
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
 
-  const menuClass = ['dropdown-menu', align === 'end' ? 'dropdown-menu-end' : undefined]
-    .filter(Boolean)
-    .join(' ')
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   return (
-    <div className="dropdown">
+    <div 
+      ref={dropdownRef}
+      className={`dropdown ${className || ''}`}
+      style={style}
+    >
+      {/* Dropdown Trigger */}
       <button
-        className={buttonClass}
-        type="button"
-        id={id}
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        disabled={disabled}
+        className="dropdown-trigger"
+        onClick={() => setIsOpen(!isOpen)}
       >
         {label}
+        <span style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          transition: 'transform var(--transition-normal)',
+          transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)'
+        }}>
+          <Icons.chevronDown 
+            style={{ 
+              width: '1em', 
+              height: '1em',
+              fontSize: 'var(--font-size-sm)'
+            }} 
+          />
+        </span>
       </button>
-      <ul className={menuClass} aria-labelledby={id}>
-        {items.map((item) => (
-          <li key={item.key}>
+
+      {/* Dropdown Menu */}
+      {isOpen && (
+        <div className="dropdown-menu">
+          {items.map((item, index) => (
             <button
+              key={index}
               className="dropdown-item"
-              type="button"
-              disabled={item.disabled}
               onClick={() => {
-                if (item.disabled) return
-                onSelect?.(item.key)
+                item.onClick()
+                setIsOpen(false)
               }}
             >
-              {item.label}
+              {item.icon && (
+                <span className="dropdown-item-icon">
+                  {item.icon}
+                </span>
+              )}
+              <span className="dropdown-item-text">
+                {item.label}
+              </span>
             </button>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
 
-
+export default Dropdown

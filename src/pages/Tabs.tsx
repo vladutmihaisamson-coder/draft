@@ -5,9 +5,10 @@ import { AppointmentCard } from '../components'
 interface TabsPageProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
+const TabsPage = ({ navigateTo, hasClerk = false, isScrolled = false }: TabsPageProps) => {
   // Mock appointment data with enhanced information
   const todayAppointments = [
     { id: 'APT-001', patient: 'John Smith', doctor: 'Dr. Sarah Chen', time: '09:00 AM', type: 'Consultation', status: 'Confirmed' as const, priority: 'High' as const, notes: 'Follow-up on chest pain symptoms' },
@@ -34,35 +35,25 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
       key: 'today', 
       label: 'Today\'s Appointments',
       content: (
-        <div>
-          <h3 style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-xl)',
-            fontWeight: 'var(--font-weight-semibold)',
-            color: 'var(--medical-01)',
-            marginBottom: 'var(--space-6)'
-          }}>
-            Today's Schedule ({todayAppointments.length} appointments)
-          </h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: 'var(--space-4)'
-          }}>
-            {todayAppointments.map((apt) => (
-              <AppointmentCard
-                key={apt.id}
-                appointmentId={apt.id}
-                patient={apt.patient}
-                doctor={apt.doctor}
-                time={apt.time}
-                type={apt.type}
-                status={apt.status}
-                priority={apt.priority}
-                notes={apt.notes}
-              />
-            ))}
-          </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gap: 'var(--space-3)',
+          background: 'transparent'
+        }}>
+          {todayAppointments.map((apt) => (
+            <AppointmentCard
+              key={apt.id}
+              appointmentId={apt.id}
+              patient={apt.patient}
+              doctor={apt.doctor}
+              time={apt.time}
+              type={apt.type}
+              status={apt.status}
+              priority={apt.priority}
+              notes={apt.notes}
+            />
+          ))}
         </div>
       )
     },
@@ -70,35 +61,25 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
       key: 'upcoming', 
       label: 'Upcoming',
       content: (
-        <div>
-          <h3 style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-xl)',
-            fontWeight: 'var(--font-weight-semibold)',
-            color: 'var(--medical-01)',
-            marginBottom: 'var(--space-6)'
-          }}>
-            Upcoming Appointments ({upcomingAppointments.length} scheduled)
-          </h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: 'var(--space-4)'
-          }}>
-            {upcomingAppointments.map((apt) => (
-              <AppointmentCard
-                key={apt.id}
-                appointmentId={apt.id}
-                patient={apt.patient}
-                doctor={apt.doctor}
-                time={apt.time}
-                type={apt.type}
-                status={apt.status}
-                priority={apt.priority}
-                notes={apt.notes}
-              />
-            ))}
-          </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gap: 'var(--space-3)',
+          background: 'transparent'
+        }}>
+          {upcomingAppointments.map((apt) => (
+            <AppointmentCard
+              key={apt.id}
+              appointmentId={apt.id}
+              patient={apt.patient}
+              doctor={apt.doctor}
+              time={apt.time}
+              type={apt.type}
+              status={apt.status}
+              priority={apt.priority}
+              notes={apt.notes}
+            />
+          ))}
         </div>
       )
     },
@@ -106,35 +87,25 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
       key: 'completed', 
       label: 'Completed',
       content: (
-        <div>
-          <h3 style={{
-            fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-xl)',
-            fontWeight: 'var(--font-weight-semibold)',
-            color: 'var(--medical-01)',
-            marginBottom: 'var(--space-6)'
-          }}>
-            Completed Appointments ({completedAppointments.length} finished)
-          </h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-            gap: 'var(--space-4)'
-          }}>
-            {completedAppointments.map((apt) => (
-              <AppointmentCard
-                key={apt.id}
-                appointmentId={apt.id}
-                patient={apt.patient}
-                doctor={apt.doctor}
-                time={apt.time}
-                type={apt.type}
-                status={apt.status}
-                priority={apt.priority}
-                notes={apt.notes}
-              />
-            ))}
-          </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+          gap: 'var(--space-3)',
+          background: 'transparent'
+        }}>
+          {completedAppointments.map((apt) => (
+            <AppointmentCard
+              key={apt.id}
+              appointmentId={apt.id}
+              patient={apt.patient}
+              doctor={apt.doctor}
+              time={apt.time}
+              type={apt.type}
+              status={apt.status}
+              priority={apt.priority}
+              notes={apt.notes}
+            />
+          ))}
         </div>
       )
     },
@@ -167,27 +138,35 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
   ]
 
   return (
-    <div style={{
+    <div style={{ 
       minHeight: '100vh',
       width: '100vw',
-      background: 'var(--shade-08)'
+      background: 'var(--medical-08)',
+      margin: 0,
+      padding: 0
     }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
-
-      <main style={{
-        maxWidth: 'var(--max-width)',
-        margin: '0 auto',
-        padding: 'var(--space-8) var(--space-6)'
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
+      
+      {/* Content section */}
+      <section style={{
+        padding: 'var(--space-8)', // 32px padding
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%'
       }}>
-        <h1 style={{
-          fontFamily: 'var(--font-family-primary)',
-          fontSize: 'var(--font-size-3xl)',
-          fontWeight: 'var(--font-weight-bold)',
-          color: 'var(--medical-01)',
-          marginBottom: 'var(--space-6)'
+        <div style={{
+          maxWidth: 'var(--max-width)', // 960px max width
+          width: '100%'
         }}>
-          Appointment Management
-        </h1>
+          <h1 style={{
+            fontFamily: 'var(--font-family-primary)',
+            fontSize: 'var(--font-size-3xl)',
+            fontWeight: 'var(--font-weight-bold)',
+            color: 'var(--medical-01)',
+            marginBottom: 'var(--space-6)'
+          }}>
+            Appointment Management
+          </h1>
         
         <p style={{
           fontFamily: 'var(--font-family-primary)',
@@ -200,7 +179,8 @@ const TabsPage = ({ navigateTo, hasClerk = false }: TabsPageProps) => {
           Manage patient appointments, schedule consultations, and track medical visit history with our comprehensive appointment system.
         </p>
         <Tabs items={items} />
-      </main>
+        </div>
+      </section>
     </div>
   )
 }

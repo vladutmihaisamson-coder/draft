@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Header from '../components/Header'
 // Clerk imports moved to conditional components
-import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeaderCell, DataTableCell } from '../components'
+import { DataTable, DataTableHeader, DataTableBody, DataTableRow, DataTableHeaderCell, DataTableCell, Modal } from '../components'
 import Button from '../components/Button'
 import Pagination from '../components/Pagination'
 // import Dropdown from '../components/Dropdown'
@@ -9,11 +9,13 @@ import Pagination from '../components/Pagination'
 interface AdminProps {
   navigateTo?: (page: string) => void
   hasClerk?: boolean
+  isScrolled?: boolean
 }
 
-const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
+const Admin = ({ navigateTo, hasClerk = false, isScrolled = false }: AdminProps) => {
   const [itemsPerPage, setItemsPerPage] = useState(10)
   const [currentPage, setCurrentPage] = useState(1)
+  const [isAddStaffModalOpen, setIsAddStaffModalOpen] = useState(false)
 
   // Calculate pagination
   const totalItems = mockActiveUsers.length
@@ -31,55 +33,70 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
     setCurrentPage(newPage)
   }
 
-  // If Clerk is not available, show a simple admin page
-  if (!hasClerk) {
-    return (
-      <div style={{ minHeight: '100vh', width: '100vw', background: 'var(--shade-08)' }}>
-        <Header navigateTo={navigateTo} hasClerk={hasClerk} />
-        <main style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
-          <div style={{
-            background: 'var(--shade-10)',
-            border: `1px solid var(--shade-07)`,
-            borderRadius: 'var(--radius-medium)',
-            padding: 'var(--space-6)'
+  return (
+    <div style={{ 
+      minHeight: '100vh',
+      width: '100vw',
+      background: 'var(--medical-08)',
+      margin: 0,
+      padding: 0
+    }}>
+      <Header navigateTo={navigateTo} hasClerk={hasClerk} isScrolled={isScrolled} />
+      
+      {/* Content section */}
+      <section style={{
+        padding: 'var(--space-8)',
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%'
+      }}>
+        <div style={{
+          maxWidth: 'var(--max-width)',
+          width: '100%'
+        }}>
+          <h1 style={{
+            fontFamily: 'var(--font-family-primary)',
+            fontSize: 'var(--font-size-3xl)',
+            fontWeight: 'var(--font-weight-bold)',
+            color: 'var(--medical-01)',
+            marginBottom: 'var(--space-6)'
           }}>
-            <h1 style={{
-              fontFamily: 'var(--font-family-primary)',
-              fontSize: 'var(--font-size-3xl)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--medical-01)',
-              marginBottom: 'var(--space-6)'
-            }}>
-              Admin Dashboard
-            </h1>
+            Staff Management
+          </h1>
+          
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            marginBottom: 'var(--space-8)',
+            gap: 'var(--space-3)'
+          }}>
             <p style={{
               fontFamily: 'var(--font-family-primary)',
               fontSize: 'var(--font-size-base)',
               color: 'var(--medical-02)',
               lineHeight: 'var(--line-height-normal)',
-              marginBottom: 'var(--space-6)',
-              maxWidth: '600px'
+              margin: 0,
+              maxWidth: '600px',
+              flex: 1
             }}>
               Manage medical staff, patient records, and system settings. Monitor healthcare operations and user access.
             </p>
-            
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: 'var(--space-4)'
-            }}>
-              <h3 style={{
-                fontFamily: 'var(--font-family-primary)',
-                fontSize: 'var(--font-size-xl)',
-                fontWeight: 'var(--font-weight-semibold)',
-                color: 'var(--medical-01)',
-                margin: 0
-              }}>Medical Staff</h3>
-              <Button variant="primary" onClick={() => alert('Add medical staff flow not implemented')}>
-                Add Staff
-              </Button>
-            </div>
+            <Button 
+              variant="primary" 
+              icon="plus"
+              iconPosition="left"
+              onClick={() => setIsAddStaffModalOpen(true)}
+              style={{ flexShrink: 0 }}
+            >
+              Add Staff
+            </Button>
+          </div>
+
+          {/* Container for table and controls */}
+          <div style={{
+            marginBottom: 'var(--space-8)'
+          }}>
 
             {/* Full-width admin table container to match homepage table style */}
             <div style={{
@@ -130,83 +147,76 @@ const Admin = ({ navigateTo, hasClerk = false }: AdminProps) => {
             </div>
 
             <div style={{ height: 'var(--space-2)' }} />
-            <div className="text-small" style={{ color: 'var(--shade-03)' }}>
+            <div className="text-small" style={{ color: 'var(--medical-03)' }}>
               Note: Actions are illustrative. Hook these up to your admin APIs.
             </div>
           </div>
-        </main>
-      </div>
-    )
-  }
+        </div>
+      </section>
 
-  return (
-    <div style={{ minHeight: '100vh', width: '100vw', background: 'var(--shade-08)' }}>
-      <Header navigateTo={navigateTo} hasClerk={hasClerk} />
-        <main style={{ maxWidth: 'var(--max-width)', margin: '0 auto', padding: 'var(--space-8) var(--space-6)' }}>
+      {/* Add Staff Modal */}
+      <Modal
+        isOpen={isAddStaffModalOpen}
+        onClose={() => setIsAddStaffModalOpen(false)}
+        title="Add Medical Staff"
+        size="lg"
+      >
         <div style={{
-          background: 'var(--shade-10)',
-          border: `1px solid var(--shade-07)`,
-          borderRadius: 'var(--radius-medium)',
-          padding: 'var(--space-6)'
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'var(--space-4)'
         }}>
-          <h1 style={{
+          <p style={{
             fontFamily: 'var(--font-family-primary)',
-            fontSize: 'var(--font-size-3xl)',
-            fontWeight: 'var(--font-weight-bold)',
-            color: 'var(--medical-01)',
-            marginBottom: 'var(--space-6)'
+            fontSize: 'var(--font-size-base)',
+            color: 'var(--medical-02)',
+            lineHeight: 'var(--line-height-normal)',
+            margin: 0
           }}>
-            Admin Dashboard
-          </h1>
-          <p className="text-body" style={{ marginBottom: 'var(--space-6)' }}>Welcome to the admin panel. Authentication is disabled in this mode.</p>
+            This is a placeholder for the Add Medical Staff form. The form would include fields for:
+          </p>
           
+          <ul style={{
+            fontFamily: 'var(--font-family-primary)',
+            fontSize: 'var(--font-size-base)',
+            color: 'var(--medical-02)',
+            lineHeight: 'var(--line-height-normal)',
+            margin: 0,
+            paddingLeft: 'var(--space-4)'
+          }}>
+            <li>Personal Information (Name, Email, Phone)</li>
+            <li>Medical License Details</li>
+            <li>Department Assignment</li>
+            <li>Role and Permissions</li>
+            <li>Emergency Contact Information</li>
+          </ul>
+
           <div style={{
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: 'var(--space-4)'
+            gap: 'var(--space-3)',
+            justifyContent: 'flex-end',
+            marginTop: 'var(--space-4)',
+            paddingTop: 'var(--space-4)',
+            borderTop: '1px solid var(--medical-07)'
           }}>
-            <h3 className="text-h4">Active users</h3>
-            <Button variant="primary" onClick={() => alert('Invite flow not implemented')}>
-              Invite user
+            <Button
+              variant="secondary"
+              onClick={() => setIsAddStaffModalOpen(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                alert('Staff member would be added here')
+                setIsAddStaffModalOpen(false)
+              }}
+            >
+              Add Staff Member
             </Button>
           </div>
-
-          <div style={{
-            width: '100vw',
-            marginLeft: 'calc(50% - 50vw)',
-            padding: '0 var(--space-6)'
-          }}>
-            <DataTable>
-            <DataTableHeader>
-              <DataTableRow hoverable={false}>
-                <DataTableHeaderCell widthPx={200}>Name</DataTableHeaderCell>
-                <DataTableHeaderCell widthPx={260}>Email</DataTableHeaderCell>
-                <DataTableHeaderCell widthPx={140}>Role</DataTableHeaderCell>
-                <DataTableHeaderCell widthPx={120}>Status</DataTableHeaderCell>
-                <DataTableHeaderCell widthPx={160}>Actions</DataTableHeaderCell>
-              </DataTableRow>
-            </DataTableHeader>
-            <DataTableBody>
-              {mockActiveUsers.map((u) => (
-                <DataTableRow key={u.id}>
-                  <DataTableCell widthPx={200}>{u.name}</DataTableCell>
-                  <DataTableCell widthPx={260}>{u.email}</DataTableCell>
-                  <DataTableCell widthPx={140}>{u.role}</DataTableCell>
-                  <DataTableCell widthPx={120}>{u.active ? 'Active' : 'Inactive'}</DataTableCell>
-                  <DataTableCell widthPx={160}>-</DataTableCell>
-                </DataTableRow>
-              ))}
-            </DataTableBody>
-            </DataTable>
-          </div>
-
-          <div style={{ height: 'var(--space-2)' }} />
-          <div className="text-small" style={{ color: 'var(--shade-03)' }}>
-            Note: Actions are illustrative. Hook these up to your admin APIs.
-          </div>
         </div>
-      </main>
+      </Modal>
     </div>
   )
 }
